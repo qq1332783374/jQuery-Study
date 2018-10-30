@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul li{list-style: none;}
+			a{color: #ddd;text-decoration: none;}
+			body{font-family: "微软雅黑";}
+			.nav{width: 1310px;height: 520px;background: #CCCCCC;position: relative;margin: 0 auto;}
+			.nav ul {width: 1310px;}
+			.nav ul li img{width: 1310px;margin: 0 auto;height: 520px;}
+			.nav .nav_bar{position: absolute;top: 10px;right: 20px;width: 276px;background: rgba(0,0,0,0.5);}
+			.nav .nav_bar li{padding: 11px 20px;font-size: 16px;cursor:pointer;}
+			.nav .nav_bar li .show{background: #fff;width:190px;padding: 10px 15px;border-radius: 4px;display: none;}
+			.nav .nav_bar li .show .title{font-size: 20px;color: #ff6428;}
+			.nav .nav_bar li .show .txt{color: #666;}
+			.nav .nav_bar li.active a{display: none;}
+			.nav .nav_bar li.active .show{display: block;}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul>
+				<li>
+					<a href="#">
+						<img src="img/1.jpg" id="img" />
+					</a>
+				</li>
+			</ul>
+			<div class="nav_bar">
+				<ul>
+					<li class="active">
+						<a href="#">利刃出击 杨栎演绎热血军旅</a>
+						<div class="show">
+							<div class="title">利刃出击</div>
+							<div class="txt">杨栎演绎热血军旅</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">以你为名的青春:甜蜜来袭</a>
+						<div class="show">
+							<div class="title">以你为名的青春</div>
+							<div class="txt">甜蜜来袭</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">热血街舞团:剧情升级版本</a>
+						<div class="show">
+							<div class="title">热血街舞团</div>
+							<div class="txt">剧情升级版本</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">偶像练习生:范政政银发撩人</a>
+						<div class="show">
+							<div class="title">偶像练习生</div>
+							<div class="txt">范政政银发撩人</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">人大会议闭幕,习近平发表讲话</a>
+						<div class="show">
+							<div class="title">人大会议闭幕</div>
+							<div class="txt">习近平发表讲话</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">利刃出击 杨栎演绎热血军旅</a>
+						<div class="show">
+							<div class="title">利刃出击</div>
+							<div class="txt">杨栎演绎热血军旅</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			$(function(){
+				$(".nav_bar ul li").attr("bimg",function(index){
+					return "img/"+(index+1)+".jpg"
+				})
+				
+				$(".nav_bar ul li").mouseover(function(){
+					var bimg  = $(this).attr("bimg")
+					$(this).addClass("active").siblings("li").removeClass("active")
+					$("#img").attr("src",bimg)
+				})
+				
+				
+			})
+		</script>
+		
+	</body>
+</html>

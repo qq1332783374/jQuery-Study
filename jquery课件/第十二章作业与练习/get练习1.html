@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		<button type="button" data-href="new1.json">新闻1</button>
+		<button type="button" data-href="new2.json">新闻2</button>
+		<button type="button" data-href="new3.json">新闻3</button>
+		<div id="box">
+			<ul>
+				<!--<li>
+					<span>国际新闻</span>
+					<span>美国爆炸</span>
+				</li>-->
+				
+			</ul>
+		</div>
+		<script>
+			$("button").click(function(){
+				var url = $(this).data("href")
+				ajax(url)
+			})
+			
+			function ajax(url){
+				$.get("data/"+url,function(res,staus,statusText){
+					var str = ""
+					console.log(res)
+					console.log(res.length)
+					for (var i=0;i<res.length;i++) {
+						str+="<li><span>"+res[i].name+"</span><span>"+res[i].age+"</span></li>"
+					}
+					$("#box ul").html(str)
+				
+				})
+			}
+			
+			
+		</script>
+	</body>
+</html>

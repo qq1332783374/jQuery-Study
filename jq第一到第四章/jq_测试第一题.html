@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				font-family: "微软雅黑";
+				color: #333;
+				
+			}
+			ul li{
+				list-style: none;
+				
+			}
+			.con{
+				width: 340px;
+				border: 1px solid #DDDDDD;
+				margin: 20px auto;
+			}
+			.con .con_tit{
+				height: 40px;
+			}
+			.con .con_tit li{
+				float: left;
+				width: 110px;
+				height: 40px;
+				background: rgba(0,0,0,0.5);
+				text-align: center;
+				line-height: 40px;
+				color: #fff;
+				margin-left: 3px;
+				margin-bottom: 15px;
+				cursor: pointer;
+			}
+			.con .con_txt{
+				padding: 5px;
+			}
+			.con .con_txt li{
+				margin-top: 5px;
+				padding: 5px 10px;
+				font-size: 12px;
+				height: 30px;
+				line-height: 30px;
+				border-top:1px solid #DDDDDD ;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="con">
+			<ul class="con_tit">
+				<li>新闻</li>
+				<li>娱乐</li>
+				<li>军事</li>
+			</ul>
+			<ul class="con_txt">
+				<li style="border-top: none;"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		var arr1 = ["村民上山开荒发现“世外桃源” 在山洞住10年1","孙政才案细节披露:重特大事故发生后不去现场指挥","1个月内第6次 越南与法国就南海问题发声明","村民上山开荒发现“世外桃源” 在山洞住","社科院预计上半年GDP增长6.9%左右","北京沙尘天气下风为何不能抗霾？专家：地面上风较小","涉案10.4亿 山西吕梁原副市长张中生一审被判死刑","两部门：重点打击整治非法社会组织骗钱敛财等行为"]
+		var arr2 = ["临汾中院负责人就张中生案一审宣判答记者问","中科大少年班出家“第一神童”:已还俗做心理咨询","油价再次上调：92号汽油涨0.13元","村民上山开荒发现“世外桃源” 在山洞住","发改委：加大内地对香港开放力度 推动CEPA升级","是谁在伤害台湾人民的感情？台作家：蔡英文当局","村民上山开荒发现“世外桃源” 在山洞住10年1","温敏在缅甸联邦议会选举中赢超半数选票 当选总统"]
+		var arr3 = ["最牛“搬家” 村民平移整栋楼房给新修路让道","香港珠宝店抢劫案最新进展:三名嫌疑人全部归案","广州人民南和南华西街历史文化街区“搬上”","土耳其副总理：不愿对俄采取措施 土俄关系很好","台当局重启核电又出事遭批：拿民众生命安全开玩笑","关于“贸易战” 中国人和美国人都要了解的8个事实","151名俄驻美外交官遭驱逐 美国：俄罗斯须先认错","大陆主流媒体刊文谈“武统”台湾 国台办回应"]
+		//初始化内容
+		fn(arr1)
+		$(".con_tit li").eq(0).css("background","#FFFFFF").css("color","#333333")
+		
+		
+		$(".con_txt li").mouseover(function(){  //鼠标移入事件
+			$(this).css("background","rgba(33,33,33,0.5)").siblings().css("background","")
+		})
+		$(".con_txt li").mouseout(function(){ //鼠标移出事件
+			$(this).css("background","")
+		})
+		
+		
+		//新闻添加事件
+		$(".con_tit li").eq(0).click(function(){
+			fn(arr1)
+			$(this).css("background","#FFFFFF").css("color","#333333").siblings().css("background","rgba(0,0,0,0.5)").css("color","#FFFFFF")
+		})
+		$(".con_tit li").eq(1).click(function(){
+			fn(arr2)
+			$(this).css("background","#FFFFFF").css("color","#333333").siblings().css("background","rgba(0,0,0,0.5)").css("color","#FFFFFF")
+		})
+		$(".con_tit li").eq(2).click(function(){
+			fn(arr3)
+			$(this).css("background","#FFFFFF").css("color","#333333").siblings().css("background","rgba(0,0,0,0.5)").css("color","#FFFFFF")
+		})
+		function fn(a){//动态添加新闻
+			for (var i = 0 ; i<a.length;i++) {
+				$(".con_txt li").eq(i).html(a[i])
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		<input type="text"  name="txt" class="txt"/><button type="button" class="btn">添加数据</button>
+		<button type="button" class="check">查看数据</button>
+		<ul>
+			
+		</ul>
+		<script>
+			$(function(){
+				
+				var json = []
+				$(".btn").click(function(){
+					var _txt = $("input[name=txt]").val();
+					json.push({
+						name:_txt
+					})
+					console.log(json)
+					$("input[name=txt]").val("");
+				})
+				
+				$(document).on("click",".check",function(){
+					var str = ''
+					$.each(json, function(i) {
+						 str +='<li>'+json[i].name+'</li>'
+						$("ul").html(str)
+					});
+					console.log(json.length)
+				})
+				
+			})
+		</script>
+	</body>
+</html>

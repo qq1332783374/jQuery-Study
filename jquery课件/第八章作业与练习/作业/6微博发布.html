@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-family: "微软雅黑";
+				font-size: 14px;
+			}
+			
+			textarea {
+				resize: none;
+				outline: none;
+			}
+			
+			em {
+				font-style: normal;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			.box {
+				width: 500px;
+				border: 1px solid #ddd;
+				margin: 20px auto;
+				position: relative;
+				padding: 6px;
+			}
+			
+			.box .text {
+				width: 486px;
+				padding: 6px;
+				border: none;
+				height: 100px;
+			}
+			
+			.box .pinlun_footer {
+				height: 20px;
+			}
+			
+			.box .pinlun_footer .tips {
+				float: left;
+			}
+			
+			.box .pinlun_footer .send {
+				float: right;
+			}
+			
+			.box .pinlun_footer .tips span {
+				color: #999;
+				font-size: 14px;
+				letter-spacing: 2px;
+			}
+			
+			.box .pinlun_footer .tips span .active {
+				color: #8B0000;
+			}
+			
+			.box .pinlun_footer .tips .error {
+				color: #8B0000;
+				display: none;
+			}
+			
+			.box .pinlun_footer .send .btn {
+				border: 1px solid #fff;
+				outline: none;
+				padding: 3px 6px;
+				background: #ddd;
+				color: #fff;
+				border-radius: 4px;
+			}
+			
+			.box .pinlun_footer .send .btn.active {
+				background: #6495ED;
+				cursor: pointer;
+			}
+			
+			.content {
+				width: 500px;
+				margin: 0 auto;
+				padding: 6px;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				display: none;
+			}
+			
+			.content h2 {
+				color: #666;
+				font-size: 20px;
+				height: 30px;
+				border-bottom: 1px solid #ddd;
+			}
+			
+			.content .content_list {
+				position: relative;
+			}
+			
+			.content .list {
+				padding: 10px;
+			}
+			
+			.content .list .head {
+				width: 50px;
+				height: 50px;
+				position: absolute;
+			}
+			
+			.content .list .head img {
+				border-radius: 50%;
+			}
+			
+			.content .list .con {
+				padding: 0px 0px 10px 60px;
+				border-bottom: 1px solid #ddd;
+			}
+			.content .list .con .answer_con{
+				/*display: none;*/
+			}
+			.content .list .con .username {
+				display: inline-block;
+				margin-bottom: 5px;
+				color: #666666;
+			}
+			
+			.content .list .con .comment {
+				word-break: break-all;
+				color: #666;
+				margin-bottom: 5px;
+			}
+			
+			.content .list .con .time_detail {
+				color: #8B0000;
+				height: 20px;
+			}
+			
+			.content .list .con .time_detail .time {
+				float: left;
+			}
+			
+			.content .list .con .detail_answer {
+				display: none;
+				margin-bottom: 5px;
+			}
+			
+			.content .list .con .time_detail .detail {
+				float: right;
+				color: #333;
+			}
+			
+			.content .list .con .detail_answer .answer {
+				height: 100px;
+				width: 100%;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+			}
+			
+			.content .list .con .detail_answer .send .btn {
+				border: 1px solid #fff;
+				outline: none;
+				padding: 3px 6px;
+				background: forestgreen;
+				color: #fff;
+				cursor: pointer;
+				border-radius: 4px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="pinlun">
+				<textarea class="text"></textarea>
+			</div>
+			<div class="pinlun_footer">
+				<div class="tips">
+					<span class="success">还可以发送<em class="active">120</em>个字</span>
+					<span class="error">已超出120个字</span>
+				</div>
+				<div class="send">
+					<button class="btn" type="button">发送</button>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<h2>评论列表</h2>
+			
+		</div>
+
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script>
+			$(function() {
+				$(".text").keyup(function() {
+					var oText = $(".text").val()
+					var len = 120 - oText.length
+					if(len < 0) {
+						$(".tips .success").hide()
+						$(".tips .error").css("display", "inline-block")
+						var val = oText.substring(0, 120)
+						$(".text").val(val)
+						$(".pinlun_footer .send").find("button").removeClass("active")
+					} else {
+						$(".tips .active").text(len)
+						$(".tips .success").css("display", "inline-block")
+						$(".tips .error").hide()
+						$(".pinlun_footer .send").find("button").addClass("active")
+					}
+				})
+				$(".send .btn").click(function() {
+					if($(this).hasClass("active")) {
+						var oText = $(".text").val()
+						var str ='<div class="content_list"><div class="list"><div class="head"><img src="img/pic1.jpg" /></div><div class="con"><a href="javascript:;" class="username">只是一杯咖啡</a><p class="comment">'+oText+'</p><div class="time_detail"><span class="time">2018-5-5 16:00</span><a href="javascript:;" class="detail">回复</a></div><div class="detail_answer"><textarea class="answer"></textarea><div class="send"><button class="btn" type="button" id="send">确定</button></div></div></div></div></div>'
+						$(".content").show().append(str)
+						$(".text").val("")
+						$(".tips .active").text("120")
+						$(this).removeClass("active")
+					} else {
+						alert("你输入的有误或者为空了")
+					}
+				})
+				
+				$(document).on("click", ".detail", function() {
+					if($(this).text()=="回复"){
+						$(this).text("关闭")
+						$(this).parent().next().slideDown()
+					}else{
+						$(this).text("回复")
+						$(this).parent().next().slideUp()
+					}
+				})
+				$(document).on("click","#send",function(){
+					var oA =$(this).parents(".detail_answer").find(".answer").val()
+					var str = '<p class="answer_con">咖啡回复了我:<em>'+oA+'</em></p>'
+					$(this).parents(".detail_answer").slideUp().prev().find(".detail").text("回复")
+					$(this).parents(".con").append(str)
+				})
+				
+
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.0.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			a:link,a:visited{
+				text-decoration: none;
+				color: #5a5c5f;
+				font-size: 14px;
+			}
+			a:hover{
+				color: #fff;
+				background: #094fb7;
+			}
+			.header{
+				width: 960px;
+				height: 45px;
+				margin: 0 auto;
+				box-shadow: 0 2px 4px #CCC;
+	
+			}
+			.header #list>li{
+				float: left;
+				height: 50px;
+				width: 80px;
+				text-align: center;
+				line-height: 40px;
+				margin-left: 10px;
+				position: relative;
+			}
+			.header #list>li .active{
+				color: #fff;
+				background: #094fb7;
+			}
+			.header #list>li>a{
+				height: 40px;
+				width: 80px;
+				display: inline-block;
+				font-size: 14px;
+				border-radius: 10px;
+			}
+			.header #list>li>ul{
+				min-width: 90px;
+				box-shadow: 0 2px 10px #CCCCCC;
+				position: absolute;
+				left: -5px;
+				margin-top: 5px;
+				display: none;
+				}
+			.header #list>li>ul>li:hover{
+				width: 90px;
+				height:40px ;
+				border-radius: 10px;
+				background: #094fb7;
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<ul id="list">
+				<li>
+					<a href="javascript:;" >首页</a>
+					<ul>
+						<li>
+							<a href="#">首页1</a>
+						</li>
+						<li>
+							<a href="#">首页2</a>
+						</li>
+						<li>
+							<a href="#">首页3</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">官网</a>
+					<ul>
+						<li>
+							<a href="#">官网1</a>
+						</li>
+						<li>
+							<a href="#">官网2</a>
+						</li>
+						<li>
+							<a href="#">官网3</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">登录</a>
+					<ul>
+						<li>
+							<a href="#">QQ登录</a>
+						</li>
+						<li>
+							<a href="#">微信登录</a>
+						</li>
+						<li>
+							<a href="#">新浪登录</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<script>
+			$(function(){
+				$(".header #list>li").mouseover(function(){ //鼠标移入
+					$(this).find("ul").show()
+					
+				})
+				
+				$(".header #list>li").mouseout(function(){//鼠标移出
+					$(this).find("ul").hide()
+				})
+				
+				$(".header #list>li ul li").mouseover(function(){
+					$(this).siblings("li")
+				})
+			})
+		</script>
+	</body>
+
+</html>

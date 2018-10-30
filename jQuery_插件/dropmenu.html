@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script src="js/dropmenu.js"></script>
+		<style>
+			.box{
+				width: 500px;
+				margin: 0 auto;
+			}
+			.dropmenu_1{
+				width: 120px;
+				height: 40px;
+				border: 1px solid #DDDDDD;
+				box-shadow: 2px 2px 4px #DDDDDD;
+				text-align: center;
+				line-height: 40px;
+				font-size: 16px;
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="dropmenu_1">
+				<a href="javascript:;" class="dropbtn">下拉菜单<i class="caret"></i> </a>
+				<ul class="dropdown-menu">
+					<li><a>内容1</a> </li>
+					<li><a>内容2</a> </li>
+					<li><a>内容3</a> </li>
+					<li><a>内容4</a> </li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			/*$(".dropmenu_1 .dropbtn").click(function(){
+				$(".dropdown-menu").toggle()
+			})*/
+			$(".dropmenu_1").dropmenu()
+		</script>
+	</body>
+</html>

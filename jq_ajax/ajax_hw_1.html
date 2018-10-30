@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="../jquery/js/jquery-1.11.0.js"></script>
+	</head>
+	<body>
+		<ul>
+			
+		</ul>
+		<div class="more">
+			<button type="button" class="btn">加载更多</button>
+		</div>
+		<script>
+			hw_1()  
+			
+			$(document).on("click",".btn",function(res){
+//				coun++
+//				start = size*coun
+//				$.ajax({
+//					type:"get",
+//					url:"data/hw_1.json",
+//					async:true,
+//					success:function(res){
+//						var str = '' ;
+//						var len = res.length;
+//						if((start+size)>len){
+//							size = len-start;
+//							$(".more").html("没有更多了")
+//						}
+//						for (var i = start ; i<(size+start) ; i++) {
+//							str+='<li>'+res[i].name+'</li>'
+//						}
+//						$('ul').append(str)
+//					}
+//				});
+				hw_1()
+			})
+			
+			function hw_1(options){
+				var defaults = {
+					hw_type:"get",
+					hw_url:"data/hw_1.json",
+					hw_str:'',
+					hw_start:0,
+					hw_size:4,
+					hw_coun:0
+				}
+				var options = $.extend(defaults,options);
+				
+//				options.hw_coun++;
+//				options.hw_start = options.hw_size*options.hw_coun;
+				$.ajax({
+				type:options.hw_type,
+				url:options.hw_url,
+				async:true,
+				success:function(res){
+					//var str = '';
+					var len = res.length;
+					if((options.hw_start+options.hw_size)>len){
+						options.hw_size = len - options.hw_start
+						$(".more").html("没有更多了")
+					}
+					for(var i = options.hw_start ; i<(options.hw_start+options.hw_size) ; i++){
+						options.hw_str+='<li>'+res[i].name+'</li>'
+					}
+					$("ul").append(options.hw_str)
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

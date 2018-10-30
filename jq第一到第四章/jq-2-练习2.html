@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>
+				<a href="#">菜单一</a>
+				<ul>
+					<li><a href="#">列表1</a></li>
+					<li><a href="#">列表1</a></li>
+					<li><a href="#">列表1</a></li>
+				</ul>
+			</li>
+		</ul>
+		<script>
+			/*
+			 利用jquery实现
+			     1.文字"菜单一"颜色为红色
+			     2.文字"列表1"颜色为黑色,而且没有下划线
+			 
+			 * 
+			 * */
+			$("#list>li>a").css("color","red")
+			$("#list>li>ul>li a").css("color","black").css("text-decoration","none")
+		</script>
+	</body>
+</html>

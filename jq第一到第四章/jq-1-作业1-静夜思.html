@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			.box{
+				width: 500px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<p class="title header">静夜思</p>
+			<p class="one">床前明月光</p>
+			<p class="two">疑是地上霜</p>
+			<p id="three">举头望明月</p>
+			<p>低头思故乡</p>
+		</div>
+		<script>
+			/*
+			 友情提醒:除了最后一句的字体大小是20px,其余都为16px大小
+			 * 
+			 * */
+			// 标题(静夜思)颜色为红色，而且是加粗
+			var onOff = true
+			$("p:eq(0)").css("color","red").css("font-weight","bold")
+			//床前明月光 颜色为蓝色,而且添加1px 实线黑色的下边框
+			$("p:eq(1)").css("color","#0000FF").css("border-bottom","1px solid black")
+			//疑是地上霜 颜色为#5DDCD0
+			$("p:eq(2)").css("color","#5DDCD0")
+			//举头望明月背景颜色#9C27B0
+			$("p:eq(3)").css("background","#9C27B0")
+			//低头思故乡 颜色为#E91E63 字体大小为20px
+			$("p:eq(4)").css("color","#E91E63").css("font-size","20px")
+			//点击静夜思 所有的诗词都隐藏,标题不隐藏
+			$("p:eq(0)").click(function(){
+				if(onOff){
+					$("p:gt(0)").css("display","none")
+					onOff = false
+				}else{
+					$("p:gt(0)").css("display","block")
+					onOff = true
+				}
+
+			})
+			
+		</script>
+		
+		
+	</body>
+</html>

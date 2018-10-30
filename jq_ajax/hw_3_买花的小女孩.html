@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="../jquery/js/jquery-1.11.0.js"></script>
+		<style>
+			.content{
+				margin-top: 20px;
+				border: 1px solid #EEEEEE;
+				border-radius: 4px;
+			}
+			.clear{
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container content clear">
+			<h1 class="text-primary text-center">买花的小女孩</h1>
+			<div class="cont clear">
+				<!--ajax数据加载-->
+			</div>
+			<div class="clearfix"></div>
+			<div class="fy text-center row">
+				<div class="col-md-12">
+					<ul class="pagination">
+						<!--ajax加载分页按钮-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function(){
+				var start = 0 ;
+				var size = 8 ;
+				var coun = 0 ;
+				//初始页面
+				$.ajax({
+					type:"get",
+					url:"data/hw_3.json?"+Math.random(),
+					async:true,
+					success:function(res){
+						var str = '';
+						var pag_num = '';
+						var len = Math.ceil(res.length/8) ;   //向上取整生成分页按钮
+						var prev = '<li class="prev"><a href="javascript:;"><<</a> </li>' ;
+						var next = '<li class="next"><a href="javascript:;">>></a></li>' ;
+						//生成分页按钮
+						for (var i = start ; i < len ; i++ ){
+							pag_num += '<li ><a href="#">'+(i+1)+'</a> </li>'
+						}
+						$(".fy .pagination").html(pag_num);
+						$(".fy .pagination li:first").before(prev) ;  //添加上一页按钮
+						$(".fy .pagination li:last").after(next) ;   //添加下一页按钮
+						$(".fy .pagination").find("li").eq(1).addClass("active") ;
+						
+						//生成初页数据
+						for (var i = start ; i<(start + size) ; i++) {
+							str +='<div class="col-md-3 "><div class="thumbnail clear"><img src="'+res[i].img+'" /><h4>'+res[i].title+'</h4><h5 class="text-danger">价格：'+res[i].price+'</h5><p class="text-primary">'+res[i].content+'...</p><a href="hw_3_test.html" class="btn btn-default pull-right clear">详情</a><div class="clearfix"></div></div></div>'
+						}
+						$(".cont").html(str)
+					}
+				});
+				
+				//点击切换
+				$(document).on("click",".pagination li:not(:first):not(:last)",function(){
+					coun = $(this).index()-1 ;
+					$(this).addClass("active").siblings().removeClass("active");
+					if(size>0){
+						size = 8 ;
+					}
+					start = size*coun ; 
+					$.ajax({
+						type:"get",
+						url:"data/hw_3.json",
+						async:true,
+						success:function(res){
+							var str = ' ' ;
+							var len = res.length ;
+							if((size+start)>len){
+								size = len-start
+							}else{
+								size = 8;
+							}
+							for (var i = start ; i<(start + size) ; i++) {
+								str +='<div class="col-md-3 "><div class="thumbnail clear"><img src="'+res[i].img+'" /><h4>'+res[i].title+'</h4><h5 class="text-danger">价格：'+res[i].price+'</h5><p class="text-primary">'+res[i].content+'...</p><a href="hw_3_test.html" class="btn btn-default pull-right clear">详情</a><div class="clearfix"></div></div></div>'
+							}
+							$(".cont").html(str)
+						}
+					});
+				})
+				
+				//上一页
+				$(document).on("click",".pagination .prev",function(){
+					coun-- ;
+					if(coun<0){
+						coun = $(".pagination li:not(:first):not(:last)").length-1
+					}
+					$(".pagination li:not(:first):not(:last)").eq(coun).addClass("active").siblings().removeClass("active");
+					if(size>0){
+						size = 8 ;
+					}
+					start = size * coun ;
+					$.ajax({
+						type:"get",
+						url:"data/hw_3.json",
+						async:true,
+						success:function(res){
+							var str = '' ;
+							var len = res.length ;
+							if((size + start) > len){
+								size = len-start;
+							}else{
+								size = 8 ;
+							}
+							for (var i = start ; i<(start + size) ; i++) {
+								str +='<div class="col-md-3 "><div class="thumbnail clear"><img src="'+res[i].img+'" /><h4>'+res[i].title+'</h4><h5 class="text-danger">价格：'+res[i].price+'</h5><p class="text-primary">'+res[i].content+'...</p><a href="hw_3_test.html" class="btn btn-default pull-right clear">详情</a><div class="clearfix"></div></div></div>'
+							}
+							$(".cont").html(str)
+						}
+					});
+					
+				})
+				
+				//下一张
+				$(document).on("click",".pagination .next",function(){
+					coun++ ;
+					if(coun>$(".pagination li:not(:first):not(:last)").length-1){
+						coun = 0
+					}
+					$(".pagination li:not(:first):not(:last)").eq(coun).addClass("active").siblings().removeClass("active");
+					if(size>0){
+						size = 8 ;
+					}
+					start = size * coun ;
+					$.ajax({
+						type:"get",
+						url:"data/hw_3.json",
+						async:true,
+						success:function(res){
+							var str = '' ;
+							var len = res.length ;
+							if((size + start) > len){
+								size = len-start;
+							}else{
+								size = 8 ;
+							}
+							for (var i = start ; i<(start + size) ; i++) {
+								str +='<div class="col-md-3 "><div class="thumbnail clear"><img src="'+res[i].img+'" /><h4>'+res[i].title+'</h4><h5 class="text-danger">价格：'+res[i].price+'</h5><p class="text-primary">'+res[i].content+'...</p><a href="hw_3_test.html" class="btn btn-default pull-right clear">详情</a><div class="clearfix"></div></div></div>'
+							}
+							$(".cont").html(str)
+						}
+					});
+					
+				})
+				
+			})
+		</script>
+	</body>
+</html>

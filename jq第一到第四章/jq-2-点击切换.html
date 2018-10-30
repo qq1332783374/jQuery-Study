@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+				width: 40px;
+				height: 40px;
+				border: 1px solid #DDD;
+				float: left;
+				cursor: pointer;
+			}
+			a:link,a:visited{
+				display: inline-block;
+				text-decoration: none;
+				color: blue;
+				width: 40px;
+				height: 40px;
+				line-height: 40px;margin-left: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<a href="javascript:;" id="prev"><</a>
+		<a href="javascript:;" id="next">></a>
+	</body>
+	<script>
+		$("ul li").eq(0).css("background","antiquewhite")
+		var num = 0
+		
+		$("ul li").click(function(){
+			num = $(this).index()
+			$(this).css("background","antiquewhite").siblings("ul li").css("background","")
+		})
+		$("#next").click(function(){
+			num++
+			
+			if(num>3){
+				num = 0
+			}
+			$("ul li").eq(num).css("background","antiquewhite").siblings("ul li").css("background","")
+		})
+		$("#prev").click(function(){
+			num--
+			if(num<0){
+				num = 3
+			}
+			$("ul li").eq(num).css("background","antiquewhite").siblings("ul li").css("background","")
+			
+		})
+	</script>
+</html>

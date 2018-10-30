@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/table.js" ></script>
+		<style>
+			table{
+				width: 500px;
+				margin: 0 auto;
+				border: 1px solid #DDDDDD;
+				border-collapse: collapse;
+				text-align: center;
+			}
+			td{
+				width: 40px;
+				border: 1px solid;
+			}
+			.even{
+				background:  aquamarine;
+			}
+			.odd{
+				background:  beige;
+			}
+			.active{
+				background: rgba(0,0,0,0.55);
+			}
+			.even1{
+				background:  antiquewhite;
+			}
+			.odd1{
+				background:  aquamarine;
+			}
+			.active1{
+				background: rgba(255,0,0,0.55);
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+			</tr>
+			<tr>
+				<td>aa</td>
+				<td>11</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td>qq</td>
+				<td>22</td>
+				<td>女</td>
+			</tr>
+			<tr>
+				<td>ww</td>
+				<td>33</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td>ss</td>
+				<td>23</td>
+				<td>女</td>
+			</tr>
+		</table>
+		<script>
+			/*$("table tr:even").addClass("even");
+			$("table tr:odd").addClass("odd")*/
+			$("table").color({
+				even:"event1",
+				odd:"odd1",
+				active:"active1"
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/jquery-1.11.0.js"></script>
+	</head>
+	<body>
+		<div class="container" style="margin-top: 20px;" id="content">
+			<!--ajax数据加载-->
+		</div>
+		<div class="container text-center txt">
+			<button type="button" class="btn btn-default">加载更多</button>
+			<img src="img/ajax-loader.gif" style="display: none;" />
+		</div>
+		<script>
+			$(function(){
+				var start = 0 ;
+				var size = 4 ;
+				var coun = 0 ;
+				//数据初始化
+				$.ajax({
+					type:"get",
+					url:"data/hw_2.json?"+Math.random(),
+					async:true,
+					success:function(res){
+						var str = '';
+						var len = res.length;
+						for(var i = start ; i<(start+size) ; i++){
+							str+='<div class="col-md-3"><div class="thumbnail"><img src="'+res[i].img+'" /><div class="caption text-center"><p class="text-primary">'+res[i].title+'</p></div></div></div>'
+						}
+						$("#content").append(str)
+					}
+				});
+				
+				
+				$(document).on("click",".btn",function(){
+					coun++ ;
+					start = size * coun ;
+					$(this).hide().siblings().show();
+					$.ajax({
+						type:"get",
+						url:"data/hw_2.json",
+						async:true,
+						success:function(res){
+							var str = '' ;
+							var len = res.length ; 
+							if((size+start)>len){
+								size = len-start ;
+								$(".txt").html("没有更多了...")
+							}
+							setTimeout(function(){
+								for (var i = start ; i < (start + size) ; i++) {
+									str += '<div class="col-md-3"><div class="thumbnail"><img src="'+res[i].img+' " /><div class="caption text-center"><p class="text-primary">'+res[i].title+'</p></div></div></div>'
+								}
+								$("#content").append(str)
+								$(".btn").show().siblings().hide()
+							},1000)
+						}
+					});
+				})
+			})
+		</script>
+	</body>
+</html>

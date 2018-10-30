@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/font_size.js" ></script>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div id="txt">
+			<p>extend()方法</p>
+		</div>
+		<button class="btn">按钮</button>
+		<script>
+			$(function(){
+				$.font_size($("p"),"36px").html("extend()方法1成功调用");
+				$(".btn").click(function(){
+					$.font_color($("p"),"red").html("extend()方法2成功调用");
+				})
+			})
+		</script>
+	</body>
+</html>

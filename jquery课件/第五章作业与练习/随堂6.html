@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul li{list-style: none;}
+			body{font-family: "微软雅黑";}
+			a{text-decoration: none;}
+			.box{width: 960px;margin: 200px auto;}
+			.box ul li{width: 234px;display: inline-block;position: relative;z-index: 100;}
+			.box ul li a{width: 167px;height: 234px;display: inline-block;#202020;}
+			
+			.footer_detail{margin-top: 10px;}
+			.box ul li .title{color:#202020;cursor: pointer;}
+			.box ul li .title:hover{color: darkorange;}
+			.box ul li .detail{color: #666;cursor: pointer;}
+			.box ul li .show{cursor:pointer;width:200px;height: 363px;top: 0;left: 0;position: absolute;background:#eee;z-index: 1;display: none;padding: 10px 15px;}
+			.box ul li .show.active{top: -10px;left: -10px;display: block;}
+		
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li>
+					<a href="#">
+						<img src="img/qq1.jpg" />
+					</a>
+					<div class="footer_detail">
+						<p class="title">卧底巨星</p>
+						<p class="detail">陈奕迅李荣浩联手搞笑</p>
+					</div>
+					<div class="show">
+						<p>卧底巨星</p>
+						<p class="detail">陈奕迅李荣浩联手搞笑</p>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/qq2.jpg" />
+					</a>
+					<div class="footer_detail">
+						<p class="title">卧底巨星</p>
+						<p class="detail">陈奕迅李荣浩联手搞笑</p>
+					</div>
+					<div class="show">
+						<p>卧底巨星</p>
+						<p class="detail">陈奕迅李荣浩联手搞笑</p>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/qq3.jpg" />
+					</a>
+					<div class="footer_detail">
+						<p class="title">卧底巨星</p>
+						<p class="detail">陈奕迅李荣浩联手搞笑</p>
+					</div>
+					<div class="show">
+						<p>卧底巨星</p>
+						<p class="detail">陈奕迅李荣浩联手搞笑</p>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/qq4.jpg" />
+					</a>
+					<div class="footer_detail">
+						<p class="title">卧底巨星</p>
+						<p class="detail">陈奕迅李荣浩联手搞笑</p>
+					</div>
+					<div class="show">
+						<p>卧底巨星</p>
+						<p class="detail">陈奕迅李荣浩联手搞笑</p>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+		<script>
+			$(".box ul li a").mouseover(function(){
+				$(this).parent("li").find(".show").addClass("active")
+			})
+			$(".box ul li .show").mouseout(function(){
+				$(this).removeClass("active")
+			})
+		</script>
+	</body>
+</html>

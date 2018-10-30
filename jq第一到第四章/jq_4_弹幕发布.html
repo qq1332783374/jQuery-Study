@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-family: "微软雅黑";
+				font-size: 20px;
+			}
+			
+			.box {
+				width: 700px;
+				height: 400px;
+				margin: 20px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.box .dan {
+				position: absolute;
+				left: 700px;
+				width: 100%;
+			}
+			
+			.footer {
+				width: 700px;
+				margin: 0 auto;
+			}
+			input#txt {
+			    outline: 0;
+			    width: 220px;
+			    padding: 10px 5px;
+			    border: 1px solid #ddd;
+			    border-radius: 4px;
+			}
+			button#btn {
+			    height: 37px;
+			    width: 75px;
+			    outline: 0;
+			    border: 1px solid #fff;
+			    background: cornflowerblue;
+			    border-radius: 4px;
+			    color: #fff;
+			    text-align: center;
+			}
+			button#btn1 {
+			    height: 37px;
+			    width: 75px;
+			    outline: 0;
+			    border: 1px solid #fff;
+			    background: crimson;
+			    border-radius: 4px;
+			    color: #fff;
+			    text-align: center;
+			}
+			img{
+				width: 700px;
+				height: 400px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+			<img src="img/1.PNG" />
+			<!--<video controls="controls" width="700" autoplay="autoplay">
+				<source src="img/pig.mp4"></source>
+			</video>-->
+		</div>
+		<div class="footer">
+			<input type="text" id="txt" />
+			<button id="btn">发送></button>
+			<button id="btn1">关闭弹幕</button>
+		</div>
+		<script>
+			var timer = null
+			$("#btn").click(function(){
+				var oTxt = $("#txt").val()
+				if(oTxt.length==0){
+					alert("不能为空")
+				}else{
+					var str = $("<div class='dan'>"+oTxt+"</div>")
+					var top = Math.floor(Math.random()*400)
+					var color = "rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")"
+					console.log(color)
+					$(".box").append(str)
+					str.css({
+						"top":top,
+						"color":color
+					})
+					var left = str.offset().left-$(".box").offset().left
+					timer = setInterval(function(){
+						left--
+						str.css("left",left+"px")
+						if(str.offset().left+str.width()<$(".box").offset().left){
+							str.remove()
+						}
+					},10)
+					
+					
+				}
+			})
+			$(document).on("click","#btn1",function(){
+				if($("#btn1").text()=='关闭弹幕'){
+					$(".dan").css("opacity","0")
+					$(this).text("打开弹幕")
+				}else{
+					$(".dan").css("opacity","1")
+					$(this).text("关闭弹幕")
+				}
+			})
+		</script>
+		
+		
+	</body>
+</html>

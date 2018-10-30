@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			body{font-family: "微软雅黑";font-size: 14px;}
+			ul li{list-style:none;}
+			*{margin: 0;padding: 0;}
+			.box{
+				width: 1000px;
+				height: 420px;
+				margin: 50px auto;
+			}
+			.box ul {
+				height: 400px;
+			}
+			.box ul li{
+				position: relative;
+				width: 60px;
+				height: 400px;
+				float: left;
+				overflow: hidden;
+				margin-right: 5px;
+			}
+			.box ul li .num{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 60px;
+				height: 400px;
+				text-align: center;
+				cursor: pointer;
+				background: #eee;
+			}
+			.box ul li .num h1{
+				font-size: 20px;
+				width: 20px;
+				line-height: 1.1;
+				margin: 80px auto;
+				
+			}
+			.box ul li .num.active{
+				background: #C20000;
+				color: #fff;
+			}
+			.box ul li .description{
+				position: absolute;
+				left: 60px;
+				width: 315px;
+				height: 400px;
+				background:#eee;
+				color: #000;
+				
+			}
+			.box ul li .description h2{
+				margin: 40px 0 40px 10px;
+				font-size: 24px;
+				font-weight: 400px;
+			}
+			.box ul li .description p{
+				padding: 0 10px;
+				line-height: 1.7;
+			} 
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li>
+					<div class="num active">
+						<h1>平台解决方案</h1>
+					</div>
+					<div class="description">
+						<h2>RISS2平台解决方案</h2>
+						<p>
+					本方案将采用集成RISS2平台和定制新功能
+				            相结合的方式，实现特色数据库的建设。项目初
+				             步考虑分为：资源检索与个人中心、资源建设与
+				             管理系统等子系统。两个系统以资源展示的形式
+				             提供给最终用户。
+						</p>
+					</div>
+				</li>
+				<li>
+					<div class="num">
+						<h1>读者行为分析服务平台</h1>
+					</div>
+					<div class="description">
+						<h2>读者行为分析服务平台</h2>
+						<p>
+					本方案将采用集成RISS2平台和定制新功能
+                    相结合的方式，实现特色数据库的建设。项目初
+                    步考虑分为：资源检索与个人中心、资源建设与
+                    管理系统等子系统。两个系统以资源展示的形式
+                    提供给最终用户。
+						</p>
+					</div>
+				</li>
+				<li>
+					<div class="num">
+						<h1>采集系统解决方案</h1>
+					</div>
+					<div class="description">
+						<h2>采集系统解决方案</h2>
+						<p>
+					 本方案将采用集成RISS2平台和定制新功能
+                    相结合的方式，实现特色数据库的建设。项目初
+                    步考虑分为：资源检索与个人中心、资源建设与
+                    管理系统等子系统。两个系统以资源展示的形式
+                    提供给最终用户。
+						</p>
+					</div>
+				</li>
+				
+			</ul>
+			
+		</div>
+		<script>
+			$(".box li").eq(0).css("width","375px")
+			$(".num").click(function(){
+				$(this).addClass("active").parent().siblings("li").find(".num").removeClass("active")
+				$(this).parent().animate({"width":"375px"},500).siblings("li").animate({"width":"60px"},500)
+			})
+		</script>
+	</body>
+</html>

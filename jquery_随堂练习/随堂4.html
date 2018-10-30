@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{margin: 0;}
+			table{width: 500px;border-collapse: collapse;margin: 20px auto;text-align: center;}
+			tr{border: 1px solid #ddd;cursor: pointer;}
+			tr td{height: 40px;border: 1px solid #ddd;}
+			.active{background:#eee;}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td></td>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>成绩</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>咖啡</td>
+				<td>男</td>
+				<td>70</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>绿茶</td>
+				<td>女</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>红茶</td>
+				<td>男</td>
+				<td>80</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>奶茶</td>
+				<td>女</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>小四</td>
+				<td>男</td>
+				<td>80</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<input type="text" id="search" />
+				</td>
+				<td>
+					<button id="btn">搜索</button>
+				</td>
+			</tr>
+		</table>
+		<script>
+			$(function(){
+				$("input").click(function(){
+					if($(this).is(":checked")){
+						$(this).parents("tr").addClass("active")
+					}else{
+						$(this).parents("tr").removeClass("active")
+					}
+				})
+				
+				$("table tr").mouseover(function(){
+					$(this).addClass("active").siblings().removeClass("active")
+					$("table tr:last,table tr:first").removeClass("active")
+				})
+				
+				$("#btn").click(function(){
+					
+					var oS = $("#search").val()
+					console.log("table tr td:contains('"+oS+"')")
+					if(oS.length==0){
+						alert("请输入点东西")
+					}else if($("table tr td:contains('"+oS+"')").length==0){
+						alert("找不到数据")
+					}else{
+						$("table tr:not(:first)").hide()
+						$("table tr:contains('"+oS+"')").show().addClass("active").find("input").prop("checked",true)//attr
+						$("table tr:last,table tr:first").show().removeClass("active")
+					}
+					
+				})
+				
+			})
+		</script>
+	</body>
+</html>

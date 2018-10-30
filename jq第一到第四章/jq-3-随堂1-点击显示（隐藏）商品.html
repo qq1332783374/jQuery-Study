@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul li{list-style: none;}
+			a{text-decoration: none;color: #333;}
+			.box{width: 500px;margin: 40px auto;}
+			.box ul li{float: left;width: 160px;height: 30px;}
+			.footer{clear: both;width: 500px;text-align: center;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li>
+					<a href="#">佳能</a>
+				</li>
+				<li>
+					<a href="#">三星</a>
+				</li>
+				<li>
+					<a href="#">尼康</a>
+				</li>
+				<li>
+					<a href="#">松下</a>
+				</li>
+				<li>
+					<a href="#">卡西欧</a>
+				</li>
+				<li>
+					<a href="#">富士</a>
+				</li>
+				<li>
+					<a href="#">科达</a>
+				</li>
+				<li>
+					<a href="#">宾得</a>
+				</li>
+				<li>
+					<a href="#">里光</a>
+				</li>
+				<li>
+					<a href="#">奥林巴斯</a>
+				</li>
+				<li>
+					<a href="#">明基</a>
+				</li>
+				<li>
+					<a href="#">爱国者</a>
+				</li>
+				<li>
+					<a href="#">其他品牌</a>
+				</li>
+			</ul>
+			
+			<div class="footer">
+				<a href="javascript:;">显示部分商品</a>
+			</div>
+			
+		</div>
+		
+		
+		
+		<script>
+			var onOff = true
+			$(".footer a").text("隐藏部分商品")
+			$(".box ul li a:first").css("color","red")
+			$(".footer a").click(function(){
+				if(onOff){
+					$(".box ul li:gt(5):not(:last)").hide(500)
+					$(".box ul li a:gt(5):not(:last)").css("color","red")
+					$(".footer a").text("显示部分商品")
+					onOff = false
+				}else{
+					$(".box ul li:gt(5)").show(500)
+					$(".footer a").text("隐藏部分商品")
+					onOff = true
+				}
+				
+			})
+			
+				
+		</script>
+	</body>
+</html>

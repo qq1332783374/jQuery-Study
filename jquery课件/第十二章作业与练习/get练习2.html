@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		<a id="a1" href="get_html_1.html">按钮1</a>
+		<a id="a2" href="get_html_2.html">按钮2</a>
+		<a id="a3" href="get_html_3.html">按钮3</a>
+		<div id="box">
+			
+		</div>
+		<script>
+			$.get("get_html_1.html",function(res){
+					$("#box").html(res)
+				})
+			
+			$("a").click(function(e){
+				var url = $(this).attr("href")
+				$.get(url,function(res){
+					$("#box").html(res)
+				})
+				
+				e.preventDefault()
+			})
+		</script>
+	</body>
+</html>

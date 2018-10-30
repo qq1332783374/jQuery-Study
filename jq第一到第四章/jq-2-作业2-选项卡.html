@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+			a:link,a:visited{
+				text-decoration: none;
+				color: #999;
+			}
+			.header{
+				width: 300px;
+				height: 50px;
+				border-bottom: none;
+				margin: 5px auto;
+				background: #f9f9f9;
+				box-shadow: 0 2px 4px;
+				color: #999;
+			}
+			
+			.header li{
+				float: left;
+				width: 100px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+			}
+			
+			.news{
+				width: 300px;
+				height: 400px;
+				margin: 0 auto;
+				margin-top: 6px;
+				box-shadow: 0 2px 4px;
+			}
+			.news>ul>li{
+				width: 300px;
+			    height: 50px;
+			    line-height: 50px; 
+    			border-bottom: 1px solid #CCC;
+			}
+			.news>ul>li .dian{
+				width: 5px;
+				height: 10px;
+				border-radius: 5px;
+				background: #fdd000;
+				display: inline-block;
+				margin-left: 5px;
+				position: absolute;
+				margin-top: 20px;
+			}
+			.news>ul>li a{
+				position: absolute;
+				margin-left: 15px;
+			}
+			.tiyu{
+				width: 300px;
+				height: 400px;
+				margin: 0 auto;
+				display: none;
+				margin-top: 6px;
+				box-shadow: 0 2px 4px;
+			}
+			.tiyu>ul>li{
+				width: 300px;
+			    height: 50px;
+			    line-height: 50px; 
+    			border-bottom: 1px solid #CCC;
+			}
+			.tiyu>ul>li .dian{
+				width: 5px;
+				height: 10px;
+				border-radius: 5px;
+				background: #fdd000;
+				display: inline-block;
+				margin-left: 5px;
+				position: absolute;
+				margin-top: 20px;
+			}
+			.tiyu>ul>li a{
+				position: absolute;
+				margin-left: 15px;
+			}
+			.yule{
+				width: 300px;
+				height: 400px;
+				margin: 0 auto;
+				display: none;
+				margin-top: 6px;
+				box-shadow: 0 2px 4px;
+			}
+			.yule>ul>li{
+				width: 300px;
+			    height: 50px;
+			    line-height: 50px;  
+    			border-bottom: 1px solid #CCC;
+			}
+			.yule>ul>li .dian{
+				width: 5px;
+				height: 10px;
+				border-radius: 5px;
+				background: #fdd000;
+				display: inline-block;
+				margin-left: 5px;
+				position: absolute;
+				margin-top: 20px;
+			}
+			.yule>ul>li a{
+				position: absolute;
+				margin-left: 15px;
+			}
+			/*
+			 * 谭上彪
+			 * 2018/3/16
+			 * 
+			 * */
+		</style>
+	</head>
+	<body>
+		
+		<ul class="header">
+			<li>新闻</li>
+			<li>体育</li>
+			<li>娱乐</li>
+		</ul>
+		
+		<div class="news" style="display: block;">
+			<ul>
+				<li>
+					<span class="dian"></span>
+					<a href="#">新闻1</a>
+				</li>
+				<li>
+					<span class="dian"></span>
+					<a href="#">新闻1</a>
+				</li>
+				<li>
+					<span class="dian"></span>
+					<a href="#">新闻1</a>
+				</li>
+				<li>
+					<span class="dian"></span>
+					<a href="#">新闻1</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="tiyu">
+			<ul>
+				<li>
+					<span class="dian"></span>
+					<a href="#">体育1</a>
+				</li>
+				<li>
+					<span class="dian"></span>
+					<a href="#">体育1</a>
+				</li>
+				<li>
+					<span class="dian"></span>
+					<a href="#">体育1</a>
+				</li>
+				<li>
+					<span class="dian"></span>
+					<a href="#">体育1</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="yule">
+			<ul>
+				<li>
+					<span class="dian"></span>
+					<a href="#">娱乐1</a>
+				</li>
+				<li>
+					<span class="dian"></span>
+					<a href="#">娱乐1</a>
+				</li>
+				<li>
+					<span class="dian"></span>
+					<a href="#">娱乐1</a>
+				</li>
+				<li>
+					<span class="dian"></span>	
+					<a href="#">娱乐1</a>
+				</li>
+			</ul>
+		</div>
+		
+		<script>
+			$(".header li").eq(0).css("background","#FFFFFF").css("border-top","2px solid #fdd000")
+			$(".header li").click(function(){
+				var index = $(this).index()
+				$(this).css("background","#FFF").css("border-top","2px solid #fdd000").siblings(".header li").css("background","").css("border-top","")
+				$("div").eq(index).show().siblings("div").hide()
+			})
+			$("div ul li").mouseover(function(){
+				$(this).css("background","#f9f9f9").css("border-top","2px solid #fdd000").css("font-weight","bold").siblings("li").css("background","").css("border-top","")
+			})
+			$("div ul li").mouseout(function(){
+				$(this).css("border-top","").css("background","").css("font-weight","")
+			})
+			/*
+			 * 谭上彪
+			 * 2018/3/16
+			 * 
+			 * */
+		</script>
+		
+	</body>
+</html>

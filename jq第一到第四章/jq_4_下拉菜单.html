@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+				color: #333;
+			}
+			body{
+				font-family: "微软雅黑";
+			}
+			.nav {
+				width: 520px;
+				height: 40px;
+				box-shadow: 0 2px 4px #ddd;
+				margin: 0 auto;
+				text-align: center;
+				line-height: 40px;
+			}
+			.nav_tit{
+				position: relative;
+				margin-left: 15px;
+				
+			}
+			.nav_tit>li{
+				float: left;
+				margin-right: 15px;
+				width: 50px;
+    			height: 40px;
+			}
+			.nav_context{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul class="nav_tit">
+				<li>
+					<a href="#">首页</a>
+						<ul class="nav_context">
+							<li>
+								<a href="#">首页1</a>
+							</li>
+							<li>
+								<a href="#">首页2</a>
+							</li>
+							<li>
+								<a href="#">首页3</a>
+							</li>
+							<li>
+								<a href="#">首页4</a>
+							</li>
+						</ul>
+				</li>
+				<li>
+					<a href="#">团队</a>
+					<ul class="nav_context">
+							<li>
+								<a href="#">团队1</a>
+							</li>
+							<li>
+								<a href="#">团队2</a>
+							</li>
+							<li>
+								<a href="#">团队3</a>
+							</li>
+							<li>
+								<a href="#">团队4</a>
+							</li>
+						</ul>
+				</li>
+				<li>
+					<a href="#">联系</a>
+					<ul class="nav_context">
+							<li>
+								<a href="#">联系1</a>
+							</li>
+							<li>
+								<a href="#">联系2</a>
+							</li>
+							<li>
+								<a href="#">联系3</a>
+							</li>
+							<li>
+								<a href="#">联系4</a>
+							</li>
+						</ul>
+				</li>
+			</ul>
+			
+		</div>
+		<script>
+			$(".nav_tit>li").mouseover(function(){
+				$(this).find(".nav_context").stop().slideDown()
+			})
+			$(".nav_tit>li").mouseout(function(){
+				$(this).find(".nav_context").stop().slideUp()
+			})
+		</script>
+	</body>
+</html>

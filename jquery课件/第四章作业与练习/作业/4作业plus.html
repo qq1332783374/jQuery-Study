@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			body{font-family: "微软雅黑";}
+			ul li{list-style:none;}
+			a{text-decoration: none;color: #333333;}
+			.box{width: 340px;margin: 20px auto;border: 1px solid #ddd;}
+			.box>ul li{width: 110px;height: 36px;line-height: 36px;text-align: center;float: left;background: #333;color: #fff;cursor: pointer;margin-left: 5px;}
+			.box>ul li.active{color: #000;background: #fff;}
+			.box>ul li:first-child{margin-left: 0;}
+			
+			.box .content{clear: both;display: none;}
+			
+			.box .content .tab{padding: 10px 9px 0 9px;}
+			.box .content .tab1{display: block;}
+			.box .content .tab ul li{height: 31px;line-height: 31px;border-bottom: 1px solid #ddd;}
+			.box .content .tab ul li:last-child{border-bottom: none;}
+			.box .content .tab ul li a{display: block;height: 31px;font-size: 14px;}
+			.box .content .tab ul li.active{background:darkgoldenrod;color: #fff;}
+			.box .content .tab ul li.active>a{color: #fff;}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	
+	<body>
+		<div class="box">
+			<ul>
+				<li class="active" data-num = "0">新闻</li>
+				<li data-num = "1">娱乐</li>
+				<li data-num = "2">军事</li>
+			</ul>
+			<div class="content">
+				<div class="tab">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			var index = 0
+			$(".content").eq(index).show()
+			var arr1 = ["村民上山开荒发现“世外桃源” 在山洞住10年1","村民上山开荒发现“世外桃源” 在山洞住","村民上山开荒发现“世外桃源” 在山洞住10年12","村民上山开荒发现“世外桃源” 在山洞住","村民上山开荒发现“世外桃源” 在","村民上山开荒发现“世外桃源” 在山洞住10年1","村民上山开荒发现“世外桃源” 在山洞住10年1","村民上山开荒发现“世外桃源” 在山洞住10年1"]
+			var arr2 = ["上山开荒发现“世外桃源” 在山洞住10年(图)","外长刚说完这句话 这个国家媒体就“兴奋”了","村民上山开荒发现“世外桃源” 在山洞住10年12","村民上山开荒发现“世外桃源” 在山洞住","村民上山开荒发现“世外桃源” 在","村民上山开荒发现“世外桃源” 在山洞住10年1","村民上山开荒发现“世外桃源” 在山洞住10年1","村民上山开荒发现“世外桃源” 在山洞住10年1"]
+			var arr3 = ["村民上山开荒发现“世外桃源” 在山洞住10年3","村民上山开荒发现“世外桃源” 在山洞住","村民上山开荒发现“世外桃源” 在山洞住10年12","村民上山开荒发现“世外桃源” 在山洞住","村民上山开荒发现“世外桃源” 在","村民上山开荒发现“世外桃源” 在山洞住10年1","村民上山开荒发现“世外桃源” 在山洞住10年1","村民上山开荒发现“世外桃源” 在山洞住10年1"]
+			function tab(obj){
+				var len = obj.length
+				var str = ""
+				for (var i=0;i<len;i++) {
+					str+="<li><a href='#'>"+obj[i]+"</a></li>"
+				}
+				$(".content .tab ul").html(str)
+			}
+			tab(arr1)
+			$(".box>ul>li").mouseover(function(){
+				var num = $(this).data("num")
+				if(num==0){
+					tab(arr1)
+				}else if(num==1){
+					tab(arr2)
+				}else if(num==2){
+					tab(arr3)
+				}
+				index = $(this).index()
+				$(this).addClass("active").siblings("li").removeClass("active")
+			})
+			$(document).on("mouseover",".content ul li",function(){
+				$(this).addClass("active").siblings("li").removeClass("active")
+			})
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/color.js" ></script>
+		<style>
+			#color{
+				width: 100px;
+				height: 100px;
+				background: #ddd;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="color">
+			这里变色
+		</div>
+		<button class="btn">按钮</button>
+		<script>
+			$(function(){
+				$(".btn").click(function(){
+					$.color($("#color"),"red").html("变了");
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul li{list-style: none;}
+			.box{width: 120px;height: 40px;margin: 20px auto;border: 1px solid #ddd;position: relative;overflow: hidden;}
+			.box ul {position: absolute;text-align: center;}
+			.box ul li{width: 120px;height: 40px;position: relative;font-size: 14px;line-height: 40px;}
+			.box .angle{position: absolute;width: 0px;height: 0px;border-left: 4px solid transparent;border-right: 4px solid transparent; }
+			.box .up{right: 0;top: 2px;border-bottom: 4px solid #333;}
+			.box .down{border-top: 4px solid #333;bottom: 0px;right: 0;}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li>新闻类别1</li>
+				<li>新闻类别2</li>
+				<li>新闻类别3</li>
+				<li>新闻类别4</li>
+				<li>新闻类别5</li>
+			</ul>
+			<a href="javascript:;" class="angle up" id="up"></a>
+			<a href="javascript:;" class="angle down" id="down"></a>
+		</div>
+		<script>
+			var h = $("ul li").height()
+			var len = $("ul li").length
+			var num = 0
+			$("#up").click(function(){
+				num++
+				if(num>len-1){
+					
+					num = 0
+					
+				}
+				$("ul").css("top",-(num*h))
+			})
+			$("#down").click(function(){
+				num--
+				if(num<0){
+					num = len-1
+				}
+				$("ul").stop().animate({
+					"top":-(num*h)
+				})
+			})
+		</script>
+		
+		
+	</body>
+</html>

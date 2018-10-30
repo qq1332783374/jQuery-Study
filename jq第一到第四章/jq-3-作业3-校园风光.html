@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			.box {
+				width: 500px;
+				margin: 0 auto;
+				border: 1px solid #ddd;
+				position: relative;
+			}
+			
+			img {
+				cursor: pointer;
+			}
+			
+			.box_img {
+				position: relative;
+			}
+			
+			.small_box {
+				position: relative;
+			}
+			
+			.box .box_img a {
+				position: absolute;
+				width: 24px;
+				height: 24px;
+				background: rgba(0, 0, 0, 0.5);
+				text-align: center;
+				line-height: 24px;
+				color: #fff;
+				top: 140px;
+				display: none;
+				text-decoration: none;
+				border-radius: 50%;
+			}
+			
+			.box .box_img .next {
+				right: 0;
+			}
+			
+			.box .small_box p {
+				text-align: center;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="small_box">
+				<p>校园风光</p>
+				<img src="img/xyfg1.jpg" />
+				<img src="img/xyfg2.jpg" />
+				<img src="img/xyfg3.jpg" />
+			</div>
+			<div class="box_img">
+				<img id="img" />
+				<a href="javascript:;" class="next">></a>
+				<a href="javascript:;" class="prev"><</a>
+			</div>
+			
+		</div>
+		<script>
+			/*
+			 小图切换成高清大图
+			 * */
+			
+			var i = 0
+			$(".small_box img").attr("bimg",function(index,value){
+				return "img/big"+(index+1)+".jpg"
+			})
+			$(".small_box img").click(function(){
+				i = $(this).index()
+				var a = $(this).attr("bimg")
+				$("#img").attr("src",a)
+				$(".box_img a").show(500)
+				$(this).css("border","2px solid black").css("box-shadow", "0 2px 4px").siblings(".small_box img").css("border","").css("box-shadow","")
+			})
+			
+			/*
+			 提高题目:添加下一张,上一张功能
+			 
+			 * */
+			
+			$(".box_img .next").click(function(){
+				i++
+				if(i>3){
+					i=1
+				}
+				$(".small_box img").eq(i-1).css("border","2px solid black").css("box-shadow", "0 2px 4px").siblings(".small_box img").css("border","").css("box-shadow","")
+				$("#img").attr("src","img/big"+i+".jpg")
+				
+			})
+			$(".box_img .prev").click(function(){
+				i--
+				if(i<1){
+					i=3
+				}
+				$(".small_box img").eq(i-1).css("border","2px solid black").css("box-shadow", "0 2px 4px").siblings(".small_box img").css("border","").css("box-shadow","")
+				$("#img").attr("src","img/big"+i+".jpg")
+			})
+			
+			
+		</script>
+	</body>
+</html>

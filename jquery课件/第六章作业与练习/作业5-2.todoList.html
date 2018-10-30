@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul li{list-style: none;}
+			body{font-family: "微软雅黑";}
+			a{text-decoration: none;color: #333;}
+			i{font-style: normal;cursor: pointer;}
+			.todo_box{width: 500px;margin: 20px auto;border: 1px  solid #ddd;padding: 10px 15px;}
+			.todo_box h1{color: #999;margin-bottom: 5px;}
+			.todo_box .todo_header{margin-bottom:10px;}
+			.todo_box .todo_input{width: 220px;padding: 10px 15px;outline: none;border: 1px solid #ddd;border-radius:4px;}
+			.todo_box .todo_send{padding: 11px 10px;border: none;background: royalblue;color: #fff;border-radius: 4px;border: 1px solid #fff;cursor: pointer;}
+			.todo_content ul li{padding: 10px 15px;border: 1px solid #ddd;margin-bottom: 15px;color: #333;word-break: break-word;border-radius:4px;}
+			.todo_content ul span{color: #333;font-size: 14px;display: inline-block;margin-bottom: 5px;}
+			.todo_content ul span i{display: inline-block;color: #B22222;margin-left: 4px;}
+			.todo_content ul li.active{border: 1px solid green;}
+			.todo_content ul .success_txt{color: darkgreen;display: none;}
+			.todo_content ul li.active .success_txt{display: inline-block;}
+		</style>
+	</head>
+	<body>
+		<div class="todo_box">
+			<h1>todoList</h1>
+			<div class="todo_header">
+				<input type="text" id="todo_input" class="todo_input" />
+				<button id="todo_send" class="todo_send">按钮</button>
+			</div>
+			<div class="todo_content">
+				<ul>
+					
+					
+				</ul>
+			</div>
+			
+		</div>
+		<script>
+			$(function(){
+				var num = 0;
+				$("#todo_send").click(function(){
+					var txt = $("#todo_input").val()
+					if(txt.length==0){
+						alert("请输入点东西")
+					}else{
+						num++
+						var str = '<li><div class="text"><span class="success_txt">已完成</span><span>第'+num+'条<i class="close">x</i></span></div><span class="content">'+txt+'</span></li>'
+						$("ul").append(str)
+						$("#todo_input").val("")
+					}
+				})
+				$(document).on("click",".close",function(){
+					var c = confirm("你确定完成了吗？")
+					if(c){
+						$(this).parents("li").addClass("active")
+						$(this).remove()
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

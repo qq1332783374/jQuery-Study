@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+			}
+			#login{
+				width: 387.5px;
+				background: ##fefefe;
+				border: 1px solid #d5dce5;
+				margin: 10px auto;
+				border-radius: 5px;
+				}
+			#login form{
+				width: 295px;
+				margin:  0 auto;
+			}
+			#login  h2{
+				color: #4d5e73;;
+				padding: 25px 30px 15px 45px;
+			}
+			#login form .login_box .input{
+				background: #FFFFFF ;
+				display: block;
+				width: 100%;
+				padding: 12px 0;
+				border: 1px solid #d5dce5;
+				margin-bottom: 20px;
+				font-weight: normal;
+				text-indent: 23px;
+				border-radius: 3px;
+				outline: 0;
+			}
+			
+			#login form .login_box button{
+				background: #c90a16;
+			    height: 44px;
+			    line-height: 40px;
+			    display: block;
+			    width: 100%;
+			    color: #fff;
+			    text-align: center;
+			    font-size: 20px;
+			    border-radius: 5px;
+				margin-bottom: 40px;
+			    margin-top: 20px;
+			    box-shadow: 0 0 3px #fff inset;
+			    outline: 0;
+			}
+			#login .login_footer{
+				border-top: 1px solid #d5dce5;
+				width: 295px;
+				margin: 0 auto;
+			}
+			#login .login_footer span{
+				display: block;
+				width: 257px;
+				font-size: 12px;
+				color: #666;
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+			#login .login_footer a{
+				display: inline-block;
+				width: 34px;
+				height: 34px;
+				background: url(img/login-third-party-new.png) no-repeat;
+				margin-bottom: 45px;
+				
+			}
+			
+			
+			#login .login_footer .qq{
+				
+			}
+			#login .login_footer .weinxin{
+				background-position: -37px 0;
+			}
+			#login .login_footer .weibo{
+				background-position: -74px 0;
+			}
+			#login .login_footer .baidu{
+				background-position: -111px 0;
+			}
+			#login .login_footer .c{
+				background-position: -148px 0;
+			}
+			#login .login_footer .git{
+				background-position: -185px 0;
+			}
+			
+			
+		</style>
+			
+	</head>
+	<body>
+		<div id="login">
+			<h2>账号登录</h2>
+			<form>
+				<div class="login_box">
+					<input type="text" placeholder="请输入用户名/邮箱手机号" class="input" id="username" />
+					<input type="password" placeholder="输入密码" class="input" id="password" />
+					<input type="password" placeholder="输入第二次密码" class="input" id="repassword" />
+					<input type="checkbox" id="check"/><span class="y_man">同意用户协议</span>
+					<button id="login_btn" type="button">登录</button>
+				</div>
+			</form>
+			<div class="login_footer">
+				<span>第三方登录</span>
+				<a href="javascript:;" class="qq"></a>
+				<a href="javascript:;" class="weinxin"></a>
+				<a href="javascript:;" class="weibo"></a>
+				<a href="javascript:;" class="baidu"></a>
+				<a href="javascript:;" class="c"></a>
+				<a href="javascript:;" class="git"></a>
+			</div>
+		</div>
+		<script>
+			/*
+			 需求分析
+			 1.每个输入都不能为空
+			 2.第一次输入和第二次输入要一致
+			 3."同意用户协议"要勾上
+			 * */
+			var len = $(".login_footer a").length
+			var password_txt = ""
+			var repassword = ""
+			var username_txt = ""
+			$("#username").blur(function(){
+				 username_txt = $(this).val()
+				if(username_txt.length==0){
+					
+					$(this).css("border","1px solid red")
+				}else{
+					$(this).css("border","1px solid green")
+				}
+			})
+			
+			$("#password").blur(function(){
+				password_txt = $(this).val()
+				if(password_txt.length==0){
+					
+					$(this).css("border","1px solid red")
+				}else if(password_txt!=repassword&&repassword.length!=0){
+					$(this).css("border","1px solid red")
+				}else{
+					$(this).css("border","1px solid green")
+				}
+			})
+			
+			$("#repassword").blur(function(){
+				 repassword = $(this).val()
+				if(password_txt!=repassword){
+					
+					$(this).css("border","1px solid red").val("")
+				}else{
+					$(this).css("border","1px solid green")
+				}
+			})
+			
+			$("#login_btn").click(function(){
+				
+				if($("#check").is(":checked")&&username_txt.length!=0&&password_txt.length!=0&&repassword.length!=0&&repassword==password_txt){
+					alert("通过")
+				}else{
+					alert("不通过")
+				}
+			})
+			/*
+			 * 
+			 *  谭上彪
+				2017-03-20
+			*/
+		</script>
+	</body>
+</html>

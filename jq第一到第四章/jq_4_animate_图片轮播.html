@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			ul li{
+				list-style: none;
+			}
+		    .box{
+		    	width: 738px;
+		    	height: 168px;
+		    	border: 1px solid #ddd;
+		    	margin: 20px auto;
+		    	overflow: hidden;
+		    	position: relative;
+		    }
+		 .box .scrool{
+		 	width: 1000%;
+		 	height: 168px;
+		 	
+		 }
+		 .box .scrool ul li{
+		 	float: left;
+            width: 738px;
+            height: 168px;
+		 }
+		 .box .btn{
+		 	position: absolute;
+		 	width: 24px;
+		 	height: 24px;
+		 	background: rgba(0,0,0,0.5);
+		 	top: 84px;
+		 	
+		 	color: #ddd;
+		 	text-align: center;
+		     line-height: 24px;
+		     text-decoration: none;
+		     
+		 }
+		.box .next{
+			right: 0;
+		} 
+		.nav{
+			position: absolute;
+            background: rgba(0,0,0,0.3);
+             right: 10px;
+            bottom: 10px;
+            padding-right: 4px;
+            border-radius: 4px;
+		}
+		.nav a{
+			width: 8px;
+			height: 8px;
+			background: #fff;
+			display: inline-block;
+			border-radius: 50%;
+			margin: 2px 0px 2px 2px;
+		}
+		.nav a.active{
+			background: orange;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			 <div class="scrool">
+			 	<div class="list">
+				<ul>
+					<li>
+						<img src="img/1.jpg" />
+					</li>
+					<li>
+						<img src="img/2.jpg" />
+					</li>
+					<li>
+						<img src="img/3.jpg" />
+					</li>
+					<li>
+						<img src="img/4.jpg" />
+					</li>
+					<li>
+						<img src="img/5.jpg" />
+					</li>
+					
+				</ul>
+			</div>
+			 </div>
+			 <a href="javascript:;" class="btn next">></a>
+			 	<a href="javascript:;" class="btn prev"><</a>
+			 		<div class="nav">
+			 			<a href="javascript:;" class="active"></a>
+			 			<a href="javascript:;"></a>
+			 			<a href="javascript:;"></a>
+			 			<a href="javascript:;"></a>
+			 			<a href="javascript:;"></a>
+			 		</div>
+		</div>
+		<script type="text/javascript">
+			
+				var index = 0
+				$(".next").click(function(){
+					var w = $(".box .scrool ul li").width()
+					var len = $(".box .scrool ul li").length 
+					index++
+					if (index>len-1) {
+						index=0
+					}
+					$(".scrool").stop().animate({
+						"marginLeft":-w*index
+					})
+					$(".nav a").eq(index).addClass("active").siblings().removeClass("active")
+				})
+				$(".nav a").click(function(){
+					index = $(this).index()
+					/*var w = $(".box .scrool ul li").width()
+					var len = $(".box .scrool ul li").length 
+					$(".nav a").eq(index).addClass("active").siblings().removeClass("active")
+			      	$(".scrool").animate({
+						"marginLeft":-w*index*/
+						tab()
+					})
+			
+				function tab(){
+					var w = $(".box .scrool ul li").width()
+					$(".nav a").eq(index).addClass("active").siblings().removeClass("active")
+			      	$(".scrool").stop().animate({
+						"marginLeft":-w*index
+					})
+			      }
+			      //定时器
+			     function fnTab(){
+			     	  timer = setInterval(function(){
+			      	index++
+			      	var len = $(".box .scrool ul li").length 
+			      	 if (index>len-1) {
+						index=0
+					}
+			      	 tab()
+			      },3000)
+			      }
+			      fnTab()
+			     
+			
+		</script>
+	</body>
+</html>

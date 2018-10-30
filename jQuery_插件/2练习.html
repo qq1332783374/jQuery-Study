@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script src=" js/exe_2.js"></script>
+	</head>
+	<body>
+		<p>456789</p>
+		<script>
+			/*
+			 利用$.extend()编写font插件方法,让字体变大 并且可以实现连缀
+			 例如:
+			 $.font($("p"),"30px").html("变化了")
+			 $.font($("p"),"20px").html("变化了")
+			 * */
+			
+//			$.font($("p"),"20px")
+			$("p").font_size({
+				size:"20px",
+				txt:"变化2"
+			})
+		</script>
+		
+	</body>
+</html>

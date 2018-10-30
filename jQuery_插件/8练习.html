@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/face.js" ></script>
+		<style>
+			table{
+				width: 500px;
+				margin: 100px auto;
+				border: 1px solid #ddd;
+				border-collapse: collapse;
+				text-align: center;
+			}
+			tr{
+				cursor: pointer;
+			}
+			td{
+				height: 40px;
+				border: 1px solid #eee;
+			}
+			.evenCls{
+				background:brown;
+			}
+			.oddCls{
+				background: darkgreen;
+			}
+			tr.active{
+				background:cadetblue;
+			}
+			.red{
+				background: red;
+			}
+			.blue{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<table>
+			<tr>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>成绩</td>
+			</tr>
+			<tr>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+		</table>
+		<script>
+//			$("table tr:even").addClass("evenCls")
+//			$("table tr:odd").addClass("oddCls")
+//			
+//			$("table tr").mouseover(function(){
+//				$(this).addClass("active").siblings().removeClass("active")
+//			}).mouseout(function(){
+//				$(this).removeClass("active").siblings().addClass("active")
+//			})
+
+			$("table").table({
+				eventType:"click",
+				even:"red",
+				odd:"blue"
+				
+			})
+			
+		</script>
+		
+	</body>
+</html>

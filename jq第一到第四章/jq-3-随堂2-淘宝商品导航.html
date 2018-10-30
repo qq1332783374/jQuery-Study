@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #333;
+			}
+			
+			.siderbar {
+				width: 120px;
+				margin: 20px auto;
+				position: relative;
+			}
+			
+			.siderbar ul li {
+				width: 120px;
+				height: 35px;
+				text-align: center;
+				line-height: 35px;
+				cursor: pointer;
+				margin-bottom: 5px;
+				background: rgba(0,0,0,0.55);
+			    color: white;
+			    font-weight: bold;
+			    margin-bottom: 5px;
+			    box-shadow: 0 2px 4px;
+			}
+			
+			.siderbar .box {
+				position: absolute;
+				width: 500px;
+				height: 300px;
+				right: -500px;
+				top: 0;
+				left: 125px;
+				z-index: 9999;
+				display: none;
+				box-shadow: 0 2px 4px;
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="siderbar">
+			<ul>
+				<li>
+					男装
+					
+				</li>
+				<li>
+					女装
+					
+				</li>
+				<li>
+					童装
+					
+				</li>
+				<li>
+					药品
+					
+				</li>
+			</ul>
+			<div class="box">
+				
+			</div>
+		</div>
+		<script>
+			var arr = ["男装","女装","童装","药品"]
+			var timer = null
+			
+			$(".siderbar ul li").mouseover(function(){
+				$(this).css("background","white").css("color","black")
+				$(".box").show(500).html(arr[$(this).index()])
+				clearTimeout(timer)
+			})
+			
+			$(".siderbar ul li").mouseout(function(){
+				$(this).css("background","").css("color","")
+				timer = setTimeout(function(){
+					$(".box").hide(500)
+				},500)
+				
+			})
+			
+			$(".box").mouseover(function(){
+				clearTimeout(timer)
+				$(this).show(500)
+			})
+			
+			$(".box").mouseout(function(){
+				$(".box").hide(500)
+			})
+			
+			
+		</script>
+		
+	</body>
+</html>

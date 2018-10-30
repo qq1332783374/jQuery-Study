@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		<div class="container">
+			<h3 class="text-center">文章列表</h3>
+			<div class="content">
+				<div class="panel panel-primary">
+				<div class="panel-body">
+					<div class="media">
+						<a href="#" class="media-left">
+							<img src="img/user_logo.jpg" class="media-object" />
+						</a>
+						<div class="media-body">
+							<a href="#">
+								<h4 class="media-heading text-danger">这是一个文章加载列表</h4>
+							</a>
+							<a href="#">
+								<p class="text-muted">这是文章加载的内容</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center txt">
+					<button class="btn btn-default" type="button" id="btn">加载更多</button>
+					<img src="img/ajax-loader.gif" style="display: none;" />
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			var start = 0 ;
+			var size = 4 ;
+			var cont = 0 ;
+			$.ajax({
+				type:"get",
+				url:"data/text.json",
+				async:true,
+				success:function(res){
+					var str = '';
+					for (var i = start ; i<(size+start);i++) {
+						str+='<div class="panel panel-primary"><div class="panel-body"><div class="media"><a href="'+res[i].url+'" class="media-left"><img src="'+res[i].img+' " class="media-object" /></a><div class="media-body"><a href="'+res[i].url+'"><h4 class="media-heading text-danger">'+res[i].title+'</h4></a><a href="'+res[i].url+'"><p class="text-muted">'+res[i].context+'</p></a></div></div></div></div>'
+					}
+					$(".content").html(str)
+				}
+			});
+			$(document).on("click","#btn",function(){
+				cont++ ;
+				start = cont*size ;
+				$(this).hide().siblings().show()
+				$.ajax({
+					type:"get",
+					url:"data/text.json",
+					async:true,
+					success:function(res){
+						var str = ""
+						var sum = res.length;
+						if(size+start>sum){
+							size = sum - start ;
+							$(".txt").html("没有更多了。。。");
+						}
+						setTimeout(function(){
+							for (var i = start ; i<(size+start);i++) {
+								str+='<div class="panel panel-primary"><div class="panel-body"><div class="media"><a href="'+res[i].url+'" class="media-left"><img src="'+res[i].img+' " class="media-object" /></a><div class="media-body"><a href="'+res[i].url+'"><h4 class="media-heading text-danger">'+res[i].title+'</h4></a><a href="'+res[i].url+'"><p class="text-muted">'+res[i].context+'</p></a></div></div></div></div>'
+							}
+							$(".content").append(str)
+							$("#btn").show().siblings().hide()
+						},1000)
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

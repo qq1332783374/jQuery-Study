@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				font-family: "微软雅黑";
+			}
+			ul li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			.list_tit{
+				width: 255px;
+				height: 50px;
+				margin: 0 auto;
+				text-align: center;
+				
+			}
+			.list_tit ul li{
+				float: left;
+				width: 80px;
+				height: 50px;
+				background: #DDDDDD;
+				line-height: 50px;
+				margin-right: 5px;
+				cursor: pointer;
+			}
+			.list_context{
+				width: 255px;
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.scrool{
+				width: 1000%;
+			}
+			.scrool>ul>li{
+				float: left;
+				width: 255px;
+			}
+			.scrool>ul>li ul li{
+				height: 40px;
+			    background: #EEE;
+			    margin-top: 5px;
+			    line-height: 40px;
+			}
+			.scrool>ul>li ul li:hover{
+				background: #fff;
+			}
+			.list_tit ul li.active{
+				background: #FFF;
+				color: #333333;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="list_tit">
+			<ul>
+				<li class="active">
+					<a>新闻</a>
+				</li>
+				<li>
+					<a>体育</a>
+				</li>
+				<li>
+					<a>娱乐</a>
+				</li>
+			</ul>
+		</div>
+		<div class="list_context">
+			<div class="scrool">
+				<ul>
+					<li>
+						<ul>
+							<li>新闻1</li>
+							<li>新闻2</li>
+							<li>新闻3</li>
+							<li>新闻4</li>
+							<li>新闻5</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li>体育1</li>
+							<li>体育2</li>
+							<li>体育3</li>
+							<li>体育4</li>
+							<li>体育5</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li>娱乐1</li>
+							<li>娱乐2</li>
+							<li>娱乐3</li>
+							<li>娱乐4</li>
+							<li>娱乐5</li>
+						</ul>
+					</li>
+				</ul>
+				
+				
+			</div>
+		</div>
+		<script>
+			
+			$(".list_tit ul li").mouseover(function(){
+				var index = $(this).index()
+				var w = $(".list_context .scrool ul li").width()
+				$(".scrool").animate({
+					"marginLeft":-w*index
+				})
+				$(".list_tit ul li").eq(index).addClass("active").siblings().removeClass("active")
+			})
+		</script>
+	</body>
+</html>

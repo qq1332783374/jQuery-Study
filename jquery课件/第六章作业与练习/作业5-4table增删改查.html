@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			body{font-family: "微软雅黑";}
+			table{width: 500px;margin: 20px auto;text-align: center;border: 1px solid #ddd;border-collapse: collapse;}
+			td{height: 40px;border: 1px solid #ddd;}
+			td input{width: 60px;outline: none;border: 1px solid #ddd;border-radius: 4px;padding: 10px 15px;display: none;}
+			.btn{padding: 6px 10px;border: none;color: #fff;border-radius: 4px;cursor: pointer;outline: none;}
+			.btn-del{background: #4169E1;}
+			.btn-change{background: #B22222;}
+			.btn-add{background: burlywood;}
+		</style>
+	</head>
+	<body>
+		<table id="table">
+			<caption>学生成绩登录表</caption>
+			<tr>
+				<td>姓名</td>
+				<td>成绩</td>
+				<td>学号</td>
+				<td>操作</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">陈小莉</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">80</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="student">1</span>
+					<input type="text" class="re_student"/>
+				</td>
+				<td>
+					<button class="btn btn-del">删除</button>
+					<button class="btn btn-change">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">陈倩</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">85</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="student">2</span>
+					<input type="text" class="re_student"/>
+				</td>
+				<td>
+					<button class="btn btn-del">删除</button>
+					<button class="btn btn-change">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">谭上彪</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">70</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="student">3</span>
+					<input type="text" class="re_student"/>
+				</td>
+				<td>
+					<button class="btn btn-del">删除</button>
+					<button class="btn btn-change">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">张城铭</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">75</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="student">4</span>
+					<input type="text" class="re_student"/>
+				</td>
+				<td>
+					<button class="btn btn-del">删除</button>
+					<button class="btn btn-change">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">李伟汉</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">95</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="student">5</span>
+					<input type="text" class="re_student"/>
+				</td>
+				<td>
+					<button class="btn btn-del">删除</button>
+					<button class="btn btn-change">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">林班长</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">76</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="student">6</span>
+					<input type="text" class="re_student"/>
+				</td>
+				<td>
+					<button class="btn btn-del">删除</button>
+					<button class="btn btn-change">修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">简友全</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">89</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="student">7</span>
+					<input type="text" class="re_student"/>
+				</td>
+				<td>
+					<button class="btn btn-del">删除</button>
+					<button class="btn btn-change">修改</button>
+				</td>
+				
+			</tr>
+			<tr>
+				<td colspan="4">
+					<button class="btn btn-add">增加</button>
+				</td>
+			</tr>
+			
+			
+		</table>
+		<script>
+			$(function(){
+				//删除
+				$(document).on("click",".btn-del",function(){
+					$(this).parents("tr").remove()
+				})
+				//修改
+				$(document).on("click",".btn-change",function(){
+					if($(this).text()=="修改"){
+						$(this).text("确定")
+						$(this).parent().siblings().find(".username").hide()
+						$(this).parent().siblings().find(".re_username").show()
+						var oUsername = $(this).parent().siblings().find(".username").text()
+						$(this).parent().siblings().find(".re_username").val(oUsername)
+						$(this).parent().siblings().find(".score").hide()
+						$(this).parent().siblings().find(".re_score").show()
+						var oScore = $(this).parent().siblings().find(".score").text()
+						$(this).parent().siblings().find(".re_score").val(oScore)
+						$(this).parent().siblings().find(".student").hide()
+						$(this).parent().siblings().find(".re_student").show()
+						var oStudent = $(this).parent().siblings().find(".student").text()
+						$(this).parent().siblings().find(".re_student").val(oStudent)
+					}else{
+						$(this).text("修改")
+						$(this).parent().siblings().find(".username").show()
+						$(this).parent().siblings().find(".re_username").hide()
+						var oUsername = $(this).parent().siblings().find(".re_username").val()
+						$(this).parent().siblings().find(".username").text(oUsername)
+						$(this).parent().siblings().find(".score").show()
+						$(this).parent().siblings().find(".re_score").hide()
+						var oScore = $(this).parent().siblings().find(".re_score").val()
+						$(this).parent().siblings().find(".score").text(oScore)
+						$(this).parent().siblings().find(".student").show()
+						$(this).parent().siblings().find(".re_student").hide()
+						var oStudent = $(this).parent().siblings().find(".re_student").val()
+						$(this).parent().siblings().find(".student").text(oStudent)	
+					}	
+				})
+				//增加
+				$(".btn-add").click(function(){
+					var str = '<tr><td><span class="username">123</span><input type="text" class="re_username"/></td><td><span class="score"></span><input type="text" class="re_score" /></td><td><span class="student"></span><input type="text" class="re_student"/></td><td><button class="btn btn-del">删除</button> <button class="btn btn-change">确定</button></td></tr>'
+					$(this).parents("tr").before(str)
+					$(this).parents("tr").prev().find(".username").hide()
+					$(this).parents("tr").prev().find(".score").hide()
+					$(this).parents("tr").prev().find(".student").hide()
+					$(this).parents("tr").prev().find(".re_score").show()
+					$(this).parents("tr").prev().find(".re_username").show()
+					$(this).parents("tr").prev().find(".re_student").show()
+				})
+				
+				
+			})
+		</script>
+	</body>
+</html>

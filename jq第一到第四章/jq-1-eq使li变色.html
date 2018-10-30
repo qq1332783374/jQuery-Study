@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			div {
+				width: 60px;
+				height: 60px;
+				margin: 10px;
+				float: left;
+				border: 2px solid blue;
+			}
+			ul li{list-style: none;}
+			
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>list item 1</li>
+			<li>list item 2</li>
+			<li>list item 3</li>
+			<li>list item 4</li>
+			<li>list item 5</li>
+		</ul>
+
+		<script>
+			/*
+			 利用eq()方法
+			 让第1个li背景颜色变成红色
+			 让第2个li背景颜色变成黄色
+			 让第3个li背景颜色变成红色
+			 让第4个li背景颜色变成黄色
+			 让第5个li背景颜色变成红色
+			 * 
+			 * */
+			$("li:eq(0)").css("background","azure")
+			$("li:eq(1)").css("background","aqua");
+			$("li:eq(2)").css("background","azure");
+			$("li:eq(3)").css("background","aqua");
+			$("li:eq(4)").css("background","azure");
+			
+		</script>
+	</body>
+
+</html>

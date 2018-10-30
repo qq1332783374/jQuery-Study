@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{margin: 0;padding: 0;}
+			body{font-family: "微软雅黑";}
+			.box{width: 700px;height: 400px;margin:20px auto;overflow: hidden;position: relative;}
+			.box .dan{word-wrap:break-word;font-size: 14px;text-align:right;height: 20px;}
+			.footer{width: 500px;margin: 20px auto;}
+			.footer #txt{width: 220px;padding: 10px 15px;outline: none;border: 1px solid #ddd;border-radius: 4px;}
+			.footer .btn{padding: 12px 14px;border: none;background: darkorange;color: #333;border-radius: 4px;outline: none;cursor: pointer;}
+			.footer .close{background: #4169E1;color: #fff;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<video controls="controls" width="700" height="400">
+				<source src="video/131.mp4"></source>
+			</video>
+		</div>
+		<div class="footer">
+			<input type="text" id="txt" />
+			<button class="btn" type="button" id="btn">发送</button>
+			<button class="btn close" type="button" id="close">关闭弹幕</button>
+		</div>
+		<script>
+			var timer = null
+			var show = true
+			$("#btn").click(function(){
+				var txt = $("#txt").val()
+				var dom = createBullet(txt)
+				 $("#txt").val("")
+				move(dom)
+			})
+			
+			//创建弹幕的函数
+			function createBullet(text){
+				var dom = $("<div class='dan'>"+text+"</div>")
+				 var fontColor = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random()) + ")";
+				var top = Math.floor(Math.random()*400)+"px"
+				var left = $(".box").width()
+				console.log(left)
+				top = parseInt(top)>400?"400":top
+				dom.css({
+					"color":fontColor,
+					"top":top,
+					"position": 'absolute',
+					"left":left
+				})
+				$(".box").append(dom)
+				return dom
+			}
+			
+			//创建定时器
+			function move(obj){
+				var left = obj.offset().left-$(".box").offset().left
+				timer = setInterval(function(){
+					left--
+					obj.css("left",left+"px")
+					if(obj.offset().left+obj.width()<$(".box").offset().left){
+						obj.remove()
+					}
+				},10)	
+			}
+			//弹幕显示与隐藏
+			$("#close").click(function(){
+				if(show){
+					$(".dan").css("opacity",0);
+					show = false
+				}else{
+					$(".dan").css("opacity",1);
+					show = true
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

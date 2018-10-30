@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			body{font-family: "微软雅黑";font-size: 14px;}
+			
+			table{width: 500px;margin: 20px auto;border: 1px solid #ddd;text-align: center;border-collapse: collapse;}
+			td{height: 40px;border: 1px solid #ddd;}
+			.btn{padding: 6px 8px;border: 1px solid #fff;color: #fff;border-radius: 4px;outline: none;cursor: pointer;}
+			.primary{background: #4169E1;}
+			.danger{background: #FF0000;}
+			td input{width: 60px;padding: 10px 15px;border: 1px solid #ddd;outline: none;border-radius: 4px;display: none;}
+			.orange{background: #FF8C00;}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>姓名</td>
+				<td>成绩</td>
+				<td>学号</td>
+				<td>操作</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">咖啡</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">80</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="num">6</span>
+					<input type="text" class="re_num"/>
+				</td>
+				<td>
+					<button class="btn primary">修改</button>
+					<button class="btn danger">删除</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">咖啡</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">80</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="num">6</span>
+					<input type="text" class="re_num"/>
+				</td>
+				<td>
+					<button class="btn primary">修改</button>
+					<button class="btn danger">删除</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">咖啡</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">80</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="num">6</span>
+					<input type="text" class="re_num"/>
+				</td>
+				<td>
+					<button class="btn primary">修改</button>
+					<button class="btn danger">删除</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">咖啡1</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">80</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="num">6</span>
+					<input type="text" class="re_num"/>
+				</td>
+				<td>
+					<button class="btn primary">修改</button>
+					<button class="btn danger">删除</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">咖啡</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">80</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="num">6</span>
+					<input type="text" class="re_num"/>
+				</td>
+				<td>
+					<button class="btn primary">修改</button>
+					<button class="btn danger">删除</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="username">咖啡</span>
+					<input type="text" class="re_username"/>
+				</td>
+				<td>
+					<span class="score">80</span>
+					<input type="text" class="re_score" />
+				</td>
+				<td>
+					<span class="num">6</span>
+					<input type="text" class="re_num"/>
+				</td>
+				<td>
+					<button class="btn primary">修改</button>
+					<button class="btn danger">删除</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<button class="btn orange">增加</button>
+				</td>
+			</tr>
+			
+		</table>
+		<script>
+		//删除
+//			$(".danger").click(function(){
+//				$(this).parents("tr").remove()
+//			})
+			$(document).on("click",".danger",function(){
+				$(this).parents("tr").remove()
+			})
+			
+		//修改
+			$(document).on("click",".primary",function(){
+				if($(this).text()=="修改"){
+				$(this).text("确定")
+				$(this).parent().siblings().find(".re_username").show().siblings().hide()
+				$(this).parent().siblings().find(".re_score").show().siblings().hide()
+				$(this).parent().siblings().find(".re_num").show().siblings().hide()
+				var oUsername = $(this).parent().siblings().find(".username").text()
+				$(this).parent().siblings().find(".re_username").val(oUsername)
+				var oScore = $(this).parent().siblings().find(".score").text()
+				$(this).parent().siblings().find(".re_score").val(oScore)
+				var oNum = $(this).parent().siblings().find(".num").text()
+				$(this).parent().siblings().find(".re_num").val(oNum)
+			}else{
+				$(this).text("修改")
+				$(this).parent().siblings().find(".re_username").hide().siblings().show()
+				$(this).parent().siblings().find(".re_score").hide().siblings().show()
+				$(this).parent().siblings().find(".re_num").hide().siblings().show()
+				var oUsername = $(this).parent().siblings().find(".re_username").val()
+				$(this).parent().siblings().find(".username").text(oUsername)
+				var oScore = $(this).parent().siblings().find(".re_score").val()
+				$(this).parent().siblings().find(".score").text(oScore)
+				var oNum = $(this).parent().siblings().find(".re_num").val()
+				$(this).parent().siblings().find(".num").text(oNum)
+			}
+			})
+		
+		
+		
+		//增加
+		$(".orange").click(function(){
+			var str = '<tr><td><span class="username">咖啡</span><input type="text" class="re_username"/></td><td><span class="score">80</span><input type="text" class="re_score" /></td><td><span class="num">6</span><input type="text" class="re_num"/></td><td><button class="btn primary">修改</button><button class="btn danger">删除</button></td></tr>'
+			$(this).parents("tr").before(str)
+			$(this).parents("tr").prev().find(".primary").text("确定")
+			$(this).parents("tr").prev().find(".re_username").show().siblings().hide()
+			$(this).parents("tr").prev().find(".re_score").show().siblings().hide()
+			$(this).parents("tr").prev().find(".re_num").show().siblings().hide()
+			
+		})
+		                                                                                                                                                                                                                                                                                                                                                              
+			
+		</script>
+		
+		
+		
+		
+		
+	</body>
+</html>

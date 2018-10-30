@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			table{
+				border: 1px solid #ddd;
+				border-collapse: collapse;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>☆</td>
+				<td>☆</td>
+				<td>☆</td>
+				<td>☆</td>
+				<td>☆</td>
+			</tr>
+		</table>
+		<div id="txt">
+			
+		</div>
+		<script>
+			$(function(){
+				var txtArr = ['很差','较差','一般','比较好','很好'];
+				$("table td").click(function(){
+					var index = $(this).index();
+					if($(this).text()=='★'){
+						$(this).text('★').nextAll().text("☆")
+						$("#txt").html(txtArr[index])
+					}else{
+						$(this).text('★').prevAll().text('★');
+                		$("#txt").html(txtArr[index]);
+
+					}
+					
+				})
+				
+				
+			})
+		</script>
+	</body>
+</html>

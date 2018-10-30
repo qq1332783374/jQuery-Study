@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			img{cursor: pointer;}
+		</style>
+	</head>
+	<body>
+		<img src="img/xyfg1.jpg" />
+		<img src="img/xyfg2.jpg" />
+		<img src="img/xyfg3.jpg" />
+		<div>
+			<img id="img" />
+		</div>
+		<script>
+			/*
+			 小图切换成高清大图
+			 * */
+			$("img").attr("bimg",function(index,value){
+				return "img/big"+(index+1)+".jpg"
+			})
+			$("img").click(function(){
+//				console.log($(this).attr("bimg"))
+				var b = $(this).attr("bimg")
+				$("#img").attr("src",b)
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+
+<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+</head>
+
+<body>
+	<h2 id="p">This is a heading</h2>
+	<p>This is a paragraph.</p>
+	<p>This is another paragraph.</p>
+	<span class="p">This is another paragraph.</span>
+	<button type="button">Click me</button>
+	<script>
+		//点击按钮让p元素颜色变成红色  让h2变成蓝色 让span变成黄色
+		$("button").click(function(){
+			$("p").css("color","red")
+			$("#p").css("color","blue")
+			$(".p").css("color","yellow")
+		})
+	</script>
+</body>
+	
+</html>

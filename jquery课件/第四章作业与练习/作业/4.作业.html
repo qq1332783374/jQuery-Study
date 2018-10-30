@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			body{font-family: "微软雅黑";}
+			ul li{list-style:none;}
+			a{text-decoration: none;color: #333333;}
+			.box{width: 340px;margin: 20px auto;border: 1px solid #ddd;}
+			.box>ul li{width: 110px;height: 36px;line-height: 36px;text-align: center;float: left;background: #333;color: #fff;cursor: pointer;margin-left: 5px;}
+			.box>ul li.active{color: #000;background: #fff;}
+			.box>ul li:first-child{margin-left: 0;}
+			
+			.box .content{clear: both;display: none;}
+			
+			.box .content .tab{padding: 10px 9px 0 9px;}
+			.box .content .tab1{display: block;}
+			.box .content .tab ul li{height: 31px;line-height: 31px;border-bottom: 1px solid #ddd;}
+			.box .content .tab ul li:last-child{border-bottom: none;}
+			.box .content .tab ul li a{display: block;height: 31px;font-size: 14px;}
+			.box .content .tab ul li.active{background:darkgoldenrod;color: #fff;}
+			.box .content .tab ul li.active>a{color: #fff;}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	
+	<body>
+		<div class="box">
+			<ul>
+				<li class="active" data-num = "0">新闻</li>
+				<li data-num = "1">娱乐</li>
+				<li data-num = "2">军事</li>
+			</ul>
+			<div class="content">
+				<div class="tab">
+					<ul>
+						<li>
+							<a href="#">村民上山开荒发现“世外桃源” 在山洞住10年(图)</a>
+						</li>
+						<li>
+							<a href="#">中国外长刚说完这句话 这个国家媒体就“兴奋”了</a>
+						</li>
+						<li>
+							<a href="#">中国这些利器横空出世 日美垄断地位从此被打破</a>
+						</li>
+						<li>
+							<a href="#">这个大消息传来后 韩网友突然都在说：萨德该撤了</a>
+						</li>
+						<li>
+							<a href="#">外媒:金正恩关键时刻采取主动 外交技巧让人惊讶</a>
+						</li>
+						<li>
+							<a href="#">工资不低甚至高于公务员 中央要让这职业令人羡慕</a>
+						</li>
+						<li>
+							<a href="#">五险一金又将有新变化 这些和你息息相关</a>
+						</li>
+						<li>
+							<a href="#">中共中央关于深化党和国家机构改革的决定</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="content">
+				<div class="tab">
+					<ul>
+						<li>
+							<a href="#">上山开荒发现“世外桃源” 在山洞住10年(图)</a>
+						</li>
+						<li>
+							<a href="#">外长刚说完这句话 这个国家媒体就“兴奋”了</a>
+						</li>
+						<li>
+							<a href="#">这些利器横空出世 日美垄断地位从此被打破</a>
+						</li>
+						<li>
+							<a href="#">大消息传来后 韩网友突然都在说：萨德该撤了</a>
+						</li>
+						<li>
+							<a href="#">金正恩关键时刻采取主动 外交技巧让人惊讶</a>
+						</li>
+						<li>
+							<a href="#">不低甚至高于公务员 中央要让这职业令人羡慕</a>
+						</li>
+						<li>
+							<a href="#">一金又将有新变化 这些和你息息相关</a>
+						</li>
+						<li>
+							<a href="#">中央关于深化党和国家机构改革的决定</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="content">
+				<div class="tab">
+					<ul>
+						<li>
+							<a href="#">“世外桃源” 在山洞住10年(图)</a>
+						</li>
+						<li>
+							<a href="#">这个国家媒体就“兴奋”了</a>
+						</li>
+						<li>
+							<a href="#"> 日美垄断地位从此被打破</a>
+						</li>
+						<li>
+							<a href="#"> 韩网友突然都在说：萨德该撤了</a>
+						</li>
+						<li>
+							<a href="#"> 外交技巧让人惊讶</a>
+						</li>
+						<li>
+							<a href="#">中央要让这职业令人羡慕</a>
+						</li>
+						<li>
+							<a href="#"> 这些和你息息相关</a>
+						</li>
+						<li>
+							<a href="#">国家机构改革的决定</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(".content").eq(0).show()
+			$(".box>ul>li").mouseover(function(){
+				var index = $(this).index()
+				$(this).addClass("active").siblings("li").removeClass("active")
+				$(".content").eq(index).show().siblings(".content").hide()
+			})
+			$(".content ul li").mouseover(function(){
+				$(this).addClass("active").siblings("li").removeClass("active")
+			})
+		</script>
+	</body>
+</html>

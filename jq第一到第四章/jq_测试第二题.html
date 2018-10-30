@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				font-family: "微软雅黑";
+				color: #DDDDDD;
+			}
+			.input_con{
+				width: 320px;
+				margin: 20px auto;
+			}
+			.input_con h3{
+				color: black;
+				margin-bottom: 15px;
+			}
+			.input_con .input_class{
+				margin-bottom: 15px;
+				padding: 4px 5px;
+			    outline: 0;
+			    border: 1px solid #999;
+			    border-radius: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="input_con">
+			<h3>考试登录系统</h3>
+			<input type="text" class="input_class" id="ueser"/>
+			<input type="text" class="input_class" id="pas"/>
+		</div>
+	</body>
+	<script>
+		$("#ueser").val("请输入用户名")
+		$("#pas").val("请输入密码")
+		
+		$("#ueser").focus(function(){
+			$(this).val("")
+			$(this).css("border","1px solid green")
+		})
+		$("#ueser").blur(function(){
+			$(this).val("请输入用户名")
+			$(this).css("border","")
+		})
+		
+		$("#pas").focus(function(){
+			$(this).val("")
+			$(this).css("border","1px solid green")
+		})
+		$("#pas").blur(function(){
+			$(this).val("请输入密码")
+			$(this).css("border","")
+		})
+	</script>
+</html>

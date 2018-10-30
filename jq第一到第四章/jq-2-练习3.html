@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			a:link,a:visited{
+				color: blue;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul id="list">
+				<li>
+					<a href="#">菜单一</a>
+					<ul>
+						<li><a href="#">列表1</a></li>
+						<li><a href="#">列表1</a></li>
+						<li><a href="#">列表1</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">菜单二</a>
+					<ul>
+						<li><a href="#">列表2</a></li>
+						<li><a href="#">列表2</a></li>
+						<li><a href="#">列表2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">菜单三</a>
+					<ul>
+						<li><a href="#">列表3</a></li>
+						<li><a href="#">列表3</a></li>
+						<li><a href="#">列表3</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<script>
+			/*
+			 利用jquery实现
+			   
+			 
+			 * 
+			 * */
+			//"菜单一","菜单二","菜单三"颜色为红色
+			$("#list>li>a").css("color","red")
+			//第一个"菜单一"的列表显示隐藏,其余为显示
+			$("#list>li>ul:first").css("display","none")
+		</script>
+	</body>
+</html>

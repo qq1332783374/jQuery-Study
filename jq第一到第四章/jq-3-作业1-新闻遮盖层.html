@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul{width: 100px;margin: 30px auto;}
+			ul li{list-style: none;position: relative;height: 40px;text-align: center;line-height: 40px;cursor: pointer;width: 200px;border: 1px solid #ddd;}
+			span{position: absolute;background: red;font-size: 14px;color: #fff;background: rgba(0,0,0,0.5);padding: 0 15px;right: -128px;display: none;}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		
+		<ul>
+			
+			<li>
+				
+				
+			</li>
+			<li>
+				
+				
+			</li>
+			<li>
+				
+				
+			</li>
+			<li>
+				
+				
+			</li>
+		</ul>
+		<script>
+			/*移入出现遮盖层的新闻*/
+			var arrNews =["新闻1","新闻2","新闻3","新闻4"]
+			var num = 0
+			
+			for (var i=0;i<arrNews.length;i++) {
+				var p = "<span></span>"
+				$("ul li").eq(i).html(arrNews[i]+p)
+			}
+			
+			/*for (var i=0;i<arrNews.length;i++) {
+				
+				$("ul li").eq(i).append(p)
+				
+			}*/
+			
+			$("ul li ").attr("title",function(index,value){
+				return (arrNews[index])
+			})
+			
+			$("li").mouseover(function(){
+				var txt = $(this).attr("title")
+				$(this).find("span").show().text(txt)
+			})
+			
+			$("li").mouseout(function(){
+				$(this).find("span").hide()
+			})
+			
+			/*$("ul li:eq(0)").mouseover(function(){
+				$("ul li span").eq(0).html(this.title).show()
+			})
+			$("ul li:eq(1)").mouseover(function(){
+				$("ul li span").eq(1).html(this.title).show()
+			})
+			$("ul li:eq(2)").mouseover(function(){
+				$("ul li span").eq(2).html(this.title).show()
+			})
+			$("ul li:eq(3)").mouseover(function(){
+				$("ul li span").eq(3).html(this.title).show()
+			})
+			
+			$("ul li:eq(0)").mouseout(function(){
+				$("ul li span").eq(0).html(this.title).hide()
+			})
+			$("ul li:eq(1)").mouseout(function(){
+				$("ul li span").eq(1).html(this.title).hide()
+			})
+			$("ul li:eq(2)").mouseout(function(){
+				$("ul li span").eq(2).html(this.title).hide()
+			})
+			$("ul li:eq(3)").mouseout(function(){
+				$("ul li span").eq(3).html(this.title).hide()
+			})*/
+			
+			
+		</script>
+	</body>
+</html>

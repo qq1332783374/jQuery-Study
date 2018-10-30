@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script src="js/lb.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+			.center{
+				width: 1380px;
+				height: 431px;
+				margin: 20px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.b_box{
+				width: 1000%;
+				height: 431px;
+			}
+			.list ul li{
+				float: left;
+				width: 1380px;
+				height: 431px;
+			}
+			.list ul li img{
+				width: 1380px;
+				height: 431px;
+			}
+			.btn{
+				position: absolute;
+				display: inline-block;
+				width: 58px;
+				height: 58px;
+				background: rgba(0,0,0,0.55);
+				text-decoration: none;
+				line-height: 58px;
+				text-align: center;
+				color: #fff;
+				font-size: 36px;
+				top: 50%;
+			}
+			.center .center_prev{
+				left: 0;
+			}
+			.center .center_next{
+				right: 0;
+				
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="center">
+			<div class="b_box">
+				<div class="list">
+					<ul>
+						<li><a href="javascript:;"><img src="img/lb_1.png" /> </a> </li>
+						<li><a href="javascript:;"><img src="img/lb_2.png" /> </a> </li>
+						<li><a href="javascript:;"><img src="img/lb_3.png" /> </a> </li>
+						<li><a href="javascript:;"><img src="img/lb_4.png" /> </a> </li>
+						<li><a href="javascript:;"><img src="img/lb_5.png" /> </a> </li>
+						<li><a href="javascript:;"><img src="img/lb_6.png" /> </a> </li>
+					</ul>
+				</div>
+			</div>
+			<a href="javascript:;" class="btn center_next">></a>
+			<a href="javascript:;" class="btn center_prev"><</a>
+		</div>
+		<script>
+//			var index = 0 ;
+//			var w = $(".list ul li").width();
+//			var len = $(".list ul li").length;
+//			$(".center_next").click(function(){   /*下一张*/
+//				index++;
+//				tab()
+//			})
+//			$(".center_prev").click(function(){
+//				index--;
+//				tab()
+//			})
+//			function tab(){
+//				if(index>len-1){
+//					index = 0 ;
+//				}
+//				$(".b_box").stop().animate({
+//					"marginLeft":-w*index
+//				})
+//				if(index<0){
+//					index = len-1;
+//				}
+//				$(".b_box").stop().animate({
+//					"marginLeft":-w*index
+//				})
+//			}
+			$(".center").myCarousel()
+		</script>
+	</body>
+</html>

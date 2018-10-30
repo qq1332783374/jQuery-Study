@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script src="js/tab.js"></script>
+		<style>
+			*{
+				margin: 0 ;
+				padding: 0 ;
+			}
+			ul li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			body{
+				font-family: "微软雅黑";
+				color: #555;
+			}
+			.tab{
+				width: 500px;
+				margin: 0 auto;
+			}
+			.tab_nav li{
+				float: left;
+				width: 140px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				border: 1px solid #ddd;
+				border-bottom: none;
+				cursor: pointer;
+			}
+			.tab_context{
+				clear: both;
+				
+			}
+			.tab_context div{
+				width: 424px;
+				height: 420px;
+				border: 1px solid #DDDDDD;
+				display: none;
+			}
+			.active{
+				background: deepskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tab">
+			<ul class="tab_nav">
+				<li class="active">标题1</li>
+				<li>标题2</li>
+				<li>标题3</li>
+			</ul>
+			<div class="tab_context">
+				<div style="display: block;">内容1</div>
+				<div>内容2</div>
+				<div>内容3</div>
+			</div>
+		</div>
+		<script>
+			/*$(".tab_nav li").click(function(){
+				var idnex = $(this).index();
+				$(this).addClass("active").siblings().removeClass("active")
+				$(".tab_context>div").eq(idnex).show().siblings().hide()
+			})*/
+			$(".tab").tab()
+		</script>
+	</body>
+</html>

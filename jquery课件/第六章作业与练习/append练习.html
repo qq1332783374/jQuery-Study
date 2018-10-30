@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<button id="btn1">按钮</button>
+		<p>总数:<em></em></p>
+		<div class="content">
+			
+		</div>
+		
+		<script>
+			
+			$("#btn1").click(function(){
+				var oTxt = $("#txt").val()
+				if(oTxt.length==0){
+					alert("请输入东西")
+				}else{
+					var str = "<div class='box'>"+oTxt+"</div>"
+					$(".content").append(str)
+					var num = $(".content").children().length
+					$("p em").html(num)
+					$("#txt").val("")
+				}
+			})
+		</script>
+	</body>
+</html>

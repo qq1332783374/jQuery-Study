@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a{
+				text-decoration: none;
+				color: #337ab7;
+			}
+			ul li{
+				list-style: none;
+				cursor: pointer;
+			}
+			i,em,strong{
+				font-style: normal;
+			}
+			h1,h2,h3,h4,h5,h6{
+				margin-top: 5px;
+				margin-bottom: 5px;
+				display: inline-block;
+				font-family: inherit;
+				color: inherit;
+			}
+			input,button,select,textarea{
+				outline:none;
+			}
+			button{
+				overflow: visible;
+				font: inherit;
+			}
+			body{
+				font-family: "微软雅黑";
+				color: #555;
+			}
+			/*公共样式*/
+			.form-group{
+				margin-right: -15px;
+				margin-left: -15px;
+			}
+			.form-control{
+				display: inline-block;
+				width: 90%;
+				height: 28px;
+				padding: 3px 12px;
+				font-size: 14px;
+				color: #555555;
+				background-color: #fff;
+				background-image: none;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-shadow: 2px 2px 4px #ddd;
+			}
+			.btn{
+				display: inline-block;
+			    padding: 6px 12px;
+			    margin-bottom: 0;
+			    font-size: 14px;
+			    font-weight: normal;
+			    line-height: 1.42857143;
+			    text-align: center;
+			    white-space: nowrap;
+			    vertical-align: middle;
+			    -ms-touch-action: manipulation;
+			    touch-action: manipulation;
+			    cursor: pointer;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			    background-image: none;
+			    border: 1px solid transparent;
+			    border-radius: 4px;
+			}
+			.btn-def{
+				color: #333;
+			    background-color: #fff;
+			    border-color: #ccc;
+			}
+			.btn-info{
+				color: #fff;
+			    background-color: #5bc0de;
+			    border-color: #46b8da;
+			}
+			.btn-danger{
+				color: #fff;
+			    background-color: #d9534f;
+			    border-color: #d43f3a;
+			}
+			.btn-success{
+				color: #fff;
+			    background-color: #5cb85c;
+			    border-color: #4cae4c;
+			}
+			.text-danger{
+				color: #a94442;
+			}
+			.text-success{
+				color: #5cb85c;
+			}
+			.text-info{
+				color: #337ab7;
+			}
+			.text-erro{
+				color: #8a6d3b;
+			}
+			.text-muted {
+			    color: #777;
+			}
+			.pull-left{
+				float: left;
+			}
+			.pull-right{
+				float: right;
+			}
+			.clear{
+				clear: both;
+			}
+			/*公共样式end*/
+
+			.to-do{
+				width: 800px;
+				margin: 20px auto;
+				border:1px solid #ddd;
+				padding: 20px;
+				border-radius: 4px;
+			}
+			.to-do-header-left{
+				float: left;
+			}
+			.to-do-header-right{
+				float: right;
+			}
+			.to-do-color ul li{
+				display: inline-block;
+				width: 40px;
+				height: 40px;
+				margin-right: 5px;
+			}
+			.to-do-header-input input{
+				margin-top: 10px;
+				margin-bottom: 5px;
+			}
+			.to-do-content{
+				width: 97%;
+				padding: 6px 12px;
+				border: 1px solid #CCCCCC;
+				border-radius:4px ;
+				box-shadow: 2px 2px 4px #ddd;
+				font-size: 14px;
+				margin-top: 5px;
+				margin-bottom: 15px;
+			}
+			.to-do-action a{
+				margin-right: 5px;
+			}
+			/*模态框 begin*/
+			.modal{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0,0,0,0.55);
+				display: none;
+			}
+			.modal-dialog{
+				width: 600px;
+				margin: 30px auto;
+				position: relative;
+			}
+			.modal-content{
+				position: relative;
+				background: #FFFFFF;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+				background-clip: padding-box;
+				border: 1px solid rgba(0, 0, 0, .2);
+				border-radius: 6px;
+				outline: 0;
+			}
+			.modal-header{
+				padding: 15px;
+				border-bottom: 1px solid #e5e5e5;
+			}
+			.modal-title{
+				margin: 0;
+    			line-height: 1.42857143;
+			}
+			.modal-body{
+				position: relative;
+				padding: 15px;
+			}
+			.modal-footer{
+				padding: 15px;
+				text-align: right;
+				border-top: 1px solid #e5e5e5;
+			}
+			.modal-footer button{
+				margin-right: 5px;
+			}
+			.modal-header .clear{
+				margin-top: -2px;
+			}
+			.close{
+				float: right;
+				font-size: 21px;
+				font-weight: bold;
+				line-height: 1;
+				color: #000;
+				text-shadow: 0 1px 0 #fff;
+				opacity: .2;
+			}
+			button.close{
+			    -webkit-appearance: none;
+			    padding: 0;
+			    cursor: pointer;
+			    background: transparent;
+			    border: 0;
+			}
+			.modal-body textarea{
+				resize: none;
+				padding: 6px;
+				margin-left: 5px;
+				border-radius: 4px;
+			}
+
+			/*模态框 end*/
+		</style>
+	</head>
+	<body>
+		<div class="to-do clear">
+			<div class="to-do-header clear">
+				<div class="to-do-header-left ">
+					<h4>主题颜色选择：</h4>
+					<div class="to-do-color">
+						<ul>
+							<!--加载to-do-color.json-->
+						</ul>
+					</div>
+				</div>
+				<div class="to-do-header-right ">
+					<h4></h4>
+				</div>
+				<div class="to-do-header-input clear">
+					<input type="text" class="form-control " name="content" placeholder="请输入代办事项"/><button type="button" class="btn btn-info add">添加</button>
+				</div>
+			</div>
+			<div class="to-do-hint ">
+				<div class="waiting">
+					<h4 class="text-danger">代办事项:<span>0</span> </h4>
+				</div>
+				<div class="done">
+					<h4 class="text-success">已完成事项:<span>0</span> </h4>
+				</div>
+			</div>
+			<div class="to-do-wait ">
+				<div class=" wait">
+					<ul>
+						<!--json数据的初始化-->
+					</ul>
+				</div>
+			</div>
+			<div class="to-do-finish">
+				<div class="to-do-fin-header">
+					<h1 class="text-info">历史记录</h1>
+				</div>
+				<div class="text-muted finish_1">
+					<ul>
+						<!--历史记录-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="modal_box">
+			<!--模态框-->
+		</div>
+
+	</body>
+</html>

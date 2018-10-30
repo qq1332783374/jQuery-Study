@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/test5.js" ></script>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul li{
+				list-style: none;
+			}
+			.swiper{
+				width: 500px;
+				height: 281px;
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.swiper ul li{
+				width: 500px;
+				height: 281px;
+			}
+			.next{
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				font-size: 20px;
+				color: #fff;
+				text-decoration: none;
+				right: 0;
+				top: 140px;
+				background: rgba(0,0,0,0.5);
+			}
+			.prev{
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				font-size: 20px;
+				color: #fff;
+				text-decoration: none;
+				left: 0;
+				top: 140px;
+				background: rgba(0,0,0,0.5);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="swiper">
+			<ul>
+				<li>
+					<a href="#">
+						<img src="img/big1.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/big2.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/big3.jpg" />
+					</a>
+				</li>
+				
+			</ul>
+			<a href="javascript:;" class="next">></a>
+			<a href="javascript:;" class="prev"><</a>
+		</div>
+		<script>
+//			var num = 0
+//			var len = $("ul li").length
+//			$(".next").click(function(){
+//				num++
+//				if(num>len-1){
+//					num = 0
+//				}
+//				$("ul li").eq(num).show().siblings().hide()
+//			})
+//			$(".prev").click(function(){
+//				num--
+//				if(num<0){
+//					num = len-1
+//				}
+//				$("ul li").eq(num).show().siblings().hide()
+//			})
+			
+			$(".swiper").swiper()
+			
+		</script>
+	</body>
+</html>

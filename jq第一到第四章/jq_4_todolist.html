@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				color: #666;
+				font-family: "微软雅黑";
+			}
+			.box{
+				width: 520px;
+				border: 1px solid #DDDDDD;
+				margin: 20px auto;
+				padding: 25px 15px;
+				border-radius: 4px;
+			}
+			.box .a{
+				display: inline-block;
+				color: red;
+				margin-bottom: 20px;
+			}
+			.box #txt{
+				width: 220px;
+				outline: 0;
+				padding: 8px 5px;
+				border-radius: 4px;
+				border: 1px solid #CCCCCC;
+			}
+			.box button{
+				border: 0;
+				width: 50px;
+				height: 35px;
+				border-radius: 4px;
+				outline: 0;
+				background: darkblue;
+				color: #FFFFFF;
+			}
+			.box .add_con{
+				margin-top: 20px;
+				width: 480px;
+				border: 1px solid #DDDDDD;
+				border-radius: 4px;
+				padding: 25px 15px;
+				position: relative;
+			}
+			.box .add_con  span{
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				display: inline-block;
+    			background: lightblue;
+    			position: absolute;
+    			right: 10px;
+    			top: 26px;
+    			text-align: center;
+    			line-height: 20px;
+    			font-size: 12px;
+			}
+			.add_con .ing{
+				margin-top: 15px;
+				
+			}
+			.rem_con .ing{
+				margin-top: 15px;
+				display: inline-block;
+				width: 60%;
+			}
+			.add_con p{
+				display: inline-block;
+			}
+			.rem_con p{
+				display: inline-block;
+			}
+			.box .rem_con{
+				margin-top: 20px;
+				width: 480px;
+				border: 1px solid #DDDDDD;
+				border-radius: 4px;
+				padding: 25px 15px;
+				position: relative;
+			}
+			.rem_con .ed{
+				margin-top: 15px;
+			}
+			.box .rem_con  span{
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				display: inline-block;
+    			background: crimson;
+    			position: absolute;
+    			right: 10px;
+    			top: 24px;
+    			text-align: center;
+    			line-height: 20px;
+    			color: #FFFFFF;
+    			font-size: 12px;
+			}
+			.now {
+			    display: inline-block;
+			    float: right;
+			    margin-top: 15px;
+			    width: 40%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<h1>ToDo<span class="a">List</span></h1>
+			<input type="text"  placeholder="添加ToDo" id="txt"/>
+			<button id="btn">添加</button>
+			<div class="add_con">
+				<h3>正在进行</h3>   <span class="ing_num"></span>
+				
+			</div>
+			<div class="rem_con">
+				<h3>已完成</h3>   <span class="ed_num"></span>
+				
+			</div>
+		</div>
+	</body>
+	<script>
+		
+		var num = 0
+		var num_1 = 0
+		
+		$(document).on("click","#btn",function(){
+			var oTxt = $("#txt").val()
+			if(oTxt == 0){
+				alert("输入不能为空")
+			}else{
+				var oLen = $(".add_con .ing").length+1
+				num = oLen
+				var oIng = "<div class='ing'> <input type='checkbox' id='ing_che' />   <p class='ing_con'>"+oTxt+"</p> </div>"
+				$(".add_con").append(oIng);
+				$(".add_con .ing_num").html(oLen)
+				$("#txt").val("")
+				
+			}
+		})
+		
+		function p(s){
+			return s<10 ? '0'+s:s;
+		}
+		
+		$(document).on("click","#ing_che",function(){
+			var oTxt = $("#txt").val()
+			var  chek = $(this).is(":checked")
+			var myDate = new Date()
+			var year = myDate.getFullYear();
+			var month = myDate.getMonth()+1;
+			var day = myDate.getDate()
+			var h = myDate.getHours()
+			var m = myDate.getMinutes()
+			var s = myDate.getSeconds()
+			var now = year+'-'+p(month)+'-'+p(day)+' '+p(h)+":"+p(m)+":"+p(s);
+			if(confirm("确定完成？")){
+				if(chek){
+				var oP = $(this).parent()
+				$(".rem_con").append(oP)
+				$(".rem_con").append("<div class='now'>"+now+"</div>")
+				num_1++
+				$(".ed_num").html(num_1);
+				num--
+				$(".add_con .ing_num").html(num)
+			}
+			}else{
+				$(this).prop("checked",false)
+			}
+			
+			
+		})
+	</script>
+</html>

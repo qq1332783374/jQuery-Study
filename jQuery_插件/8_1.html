@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script src="js/check.js"></script>
+		<style>
+			table{
+				width: 500px;
+				margin: 100px auto;
+				border: 1px solid #ddd;
+				border-collapse: collapse;
+				text-align: center;
+			}
+			tr{
+				cursor: pointer;
+			}
+			td{
+				height: 40px;
+				border: 1px solid #eee;
+			}
+			
+			tr.active{
+				background:cadetblue;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<table>
+			<tr>
+				<td></td>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>成绩</td>
+				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" />
+				</td>
+				<td>咖啡</td>
+				<td>20</td>
+				<td>60</td>
+			</tr>
+		</table>
+		<script>
+			/*
+			 利用对象插件,编写一个tableM插件,勾选后当前tr变颜色
+			 * */
+			$("table").tableM()
+			
+			
+		</script>
+		
+	</body>
+</html>

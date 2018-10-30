@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/demo12.js" ></script>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+		<script>
+			/*
+			 利用命名空间方式,编写一个插件centerDiv,实现一个div水平,垂直方向居中,并且可以实现连缀
+			 
+			 *例如: 
+			 * $.kafei.centerDiv($(".box")).html("1231")
+			 * */
+			$.kafei.centerDiv($(".box")).html("1231")
+			$(window).resize(function(){
+				$.kafei.centerDiv($(".box")).html("1231")
+			})
+			
+		</script>
+	</body>
+</html>

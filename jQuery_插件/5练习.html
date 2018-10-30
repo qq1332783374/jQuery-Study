@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/fontBig.js" ></script>
+	</head>
+	<body>
+		<p>456</p>
+		<script>
+			/*
+			 利用命名空间方式,编写一个fontBig插件,让字体变大,并且可以实现连缀
+			 例如:
+			 $.kafei.fontBig($("p"),"40px")
+			 $.kafei.fontBig($("p"),"30px")
+			 * */
+			
+			$.fontBig.font_size($("p"),"30px").html("变大了")
+		</script>
+	</body>
+</html>

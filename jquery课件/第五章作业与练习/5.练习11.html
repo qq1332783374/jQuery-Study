@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    
+    <script src="js/jquery-1.11.0.js"></script>
+    <style>
+    	.left {
+        width: auto;
+        height: 120px;
+    }
+    
+    .left div {
+        width: 150px;
+        height: 70px;
+        padding: 5px;
+        margin: 5px;
+        float: left;
+        background: #bbffaa;
+        border: 1px solid #ccc;
+    }
+    a,p{
+        display: block;
+    }
+    </style>
+</head>
+
+<body>
+    <h3>.html()与.text()</h3>
+    <div class="left first-div">
+        <div class="div">
+            <a>:first-child</a>
+            <a>第二个元素</a>
+            <a>:last-child</a>
+        </div>  
+        <div class="div">
+            <a>:first-child</a>
+            <a>第二个元素</a>
+            <a>:last-child</a>
+        </div>
+    </div>
+    
+    <h4>显示通过html方法获取到的内容</h4>
+    <p></p>
+
+    <h4>显示通过text方法获取到的内容</h4>
+    <p></p>
+
+
+    <script type="text/javascript">
+        /*
+         	获取.first-div 整个HTML文档,在第一个p标签里面显示(不可以用eq()方法)
+         * */
+        
+        
+    </script>
+
+
+    <script type="text/javascript">
+        /*
+         	获取.first-div 整个文本内容,在第二个p标签里面显示(不可以用eq()方法)
+         * */
+       
+    </script>
+
+
+    <script type="text/javascript">
+       
+        /*
+         	利用text()方法,替换.first-div下的第一个a元素文本内容,替换后的文本内容为"我是替换第一个a元素的内容"(不可以用eq()方法)
+         * */
+        
+       
+    </script>
+
+
+    <script type="text/javascript">
+      
+        /*
+         	利用html()方法,替换.first-div下的第二个div子节点,替换后的内容为"整个div的子节点都被替换了"(不可以用eq()方法)
+         * */
+        
+        
+    </script>
+
+
+    
+
+
+
+</body>
+
+</html>

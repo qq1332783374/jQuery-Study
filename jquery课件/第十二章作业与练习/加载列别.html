@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.load{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				
+			</ul>
+		</div>
+		<div class="load">
+			<img src="img/ajax-loader.gif" />
+		</div>
+		<div class="more">
+			<button class="btn">加载更多...</button>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script>
+			
+			var counter = 0;
+			var pageStart = 0
+			var pageSize = 1
+			
+			$.ajax({
+					type:"get",
+					url:"data/get_json.json",
+					async:true,
+					success:function(res){
+						var sum = res.length
+//						if(sum-pageStart<pageSize){
+//							pageSize = sum-pageStart
+//							
+//						}
+							var str = ""
+							for (var i=pageStart;i<(pageStart+pageSize);i++) {
+							str += '<li class="a">'+res[i].name+'</li>'	
+						}
+						$("ul").append(str)	
+					}		
+				});
+			
+			
+			$(".btn").click(function(){
+				counter++
+				pageStart = counter * pageSize//4 8 12
+				console.log(pageStart+"strat")
+				$.ajax({
+					type:"get",
+					url:"data/get_json.json",
+					async:true,
+					success:function(res){
+						var sum = res.length//14
+						console.log(sum)
+						if(sum-pageStart<pageSize){
+							pageSize = sum-pageStart
+							$(".more").html("没有跟多了")
+							
+							console.log(pageSize)
+						}
+							var str = ""
+							for (var i=pageStart;i<(pageStart+pageSize);i++) {
+							str += '<li class="a">'+res[i].name+'</li>'	
+						}
+						$("ul").append(str)	
+					}		
+				});
+				
+			})
+		</script>
+	</body>
+</html>

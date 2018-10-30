@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		
+	</head>
+
+	<body>
+
+		<p><span>p 元素中的 span 元素</span></p>
+		<p>这个 p 元素没有 span 元素</p>
+		<script>
+			/*
+			 利用:has()选择包含span的元素,添加1px solid red
+			 * 
+			 * */
+			
+			
+			$("p:has(span)").css("border", "1px solid red");
+	
+		</script>
+	</body>
+
+</html>

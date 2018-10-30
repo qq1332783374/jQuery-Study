@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				font-family: "微软雅黑";
+			}
+			a{
+				text-decoration: none;
+				color: #666;
+			}
+			.context{
+				width: 600px;
+				margin: 20px auto;
+			}
+			
+			
+			.context .con_tit{
+				border-bottom: 1px solid #DDDDDD;
+				margin-bottom: 15px;
+			}
+			.context .con_tit p{
+				display: inline-block;
+				border-bottom: 2px solid #5aa700;
+				padding: 10px 0;
+			}
+			.context .con_tit span{
+				font-size: 28px;
+			}
+			.context .con_tit em{
+				font-style: normal;
+			}
+			
+			
+			.context .con_input{
+				border: 1px solid #ddd;
+				padding: 5px;
+				position: relative;
+			}
+			.context #text{
+				outline: 0;
+				resize: none;
+				width: 100%;
+				height: 100px;
+				border: 0;
+				font-size: 16px;
+			}
+			.context .con_input p{
+				position: absolute;
+				bottom: 5px;
+    			right: 10px;
+    			color: #8a8a8a;
+			}
+			.context .con_input em{
+				font-style: normal;
+			}
+			
+			
+			.context .con_btn{
+				position: relative;
+				border: 1px solid #ddd;
+			    border-top: none;
+			    height: 40px;
+			}
+			.context .con_btn .con_pic {
+			    position: absolute;
+			    width: 100px;
+			    top: 10px;
+			}
+			.context .con_btn .con_pic p{
+				display: inline-block;
+			    position: absolute;
+			    color: #8a8a8a;
+			}
+			button.btn {
+			    position: absolute;
+			    right: 8px;
+			    top: 7px;
+			    width: 84px;
+			    background: #5aa700;
+			    height: 26px;
+			    color: #fff;
+			    outline: 0;
+			    border: none;
+			    border-radius: 4px;
+			}
+			
+			.con_txt{
+				margin-top: 15px;			
+			}
+			.con_txt .con_txt_1{
+				margin-top: 75px;
+				position: relative;
+				display: none;
+			}
+			.con_txt .con_txt_1 .con_txt_pic{
+				display: inline-block;
+			}
+			.con_txt .con_txt_1 .con_txt_pic img{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+			}
+			.con_txt .con_txt_1 .con_txt_1_context{
+				position: absolute;
+			    width: 88%;
+			    right: 0;
+			    top: 0;
+			    padding: 5px 5px;
+			}
+			.con_txt .con_txt_1 .con_txt_1_context .con_txt_1_context_tit p {
+				font-size: 14px;
+				color: #333;
+				display: inline-block;
+				margin-right: 15px;
+			}
+			.con_txt .con_txt_1 .con_txt_1_context .con_txt_1_context_tit span{
+				 color: #999;
+   				 font-size: 12px;
+			}
+			.con_txt .con_txt_1 .con_txt_1_context .con_txt_1_context_txt{
+				color: #333333;
+				font-size: 14px;
+				line-height: 25px;
+				border-bottom: 1px solid #ddd;
+    			padding: 15px 0;
+			}
+			.little_pic {
+			    margin-top: 15px;
+			    position: relative;
+			}
+			.little_pic_1{  /*浏览小图标*/
+				width: 17px;
+				height: 14px;
+				display: inline-block;
+				background: url(img/小图标.png);
+				background-position: -20px -20px;
+			}
+			.little_pic_2{
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 70px;
+				color: #666;
+			}
+			.little_pic_2 .lit_pic{  /*点赞小图标*/
+				width: 17px;
+				height: 14px;
+				display: inline-block;
+				background: url(img/小图标.png);
+				background-position: -40px -20px;
+			}
+			.lit_txt:hover{  /*鼠标移入点赞变色*/
+				color: #5AA700;
+			}
+			.little_pic_3{
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				color: #666;
+				width: 50px;
+			}
+			.little_pic_3 .lit_pic_1{  /*评论小图标*/
+				width: 17px;
+				height: 14px;
+				display: inline-block;
+				background: url(img/小图标.png);
+				background-position: -58px -20px;
+				
+			}
+			.lit_txt_1:hover{  /*鼠标移入评论变色*/
+				color: #5AA700;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="context">
+			<div class="con_tit">
+				<p><span>评论</span>(<em id="num">0</em>)</p>
+			</div>
+			<div class="con_input">
+				<textarea id="text" placeholder="我来说两句"></textarea>
+				<p>还可以输入<em>150个字</em></p>
+			</div>
+			<div class="con_btn">
+				<div class="con_pic">
+					<img src="img/pic_01.png" /><p>图片</p>
+				</div>
+				<div class="con_btn_1">
+					<button class="btn">发布</button>
+				</div>
+			</div>
+			<div class="con_txt">
+				<div class="txt_tit">
+					<span style="margin-right: 15px;color: #5AA700;">最热</span>|<span style="margin-left: 15px;">最热</span>
+				</div>
+				<div class="con_txt_1">
+					<div class="con_txt_pic">
+						<img src="img/use_1.jpg" />
+					</div>
+					<div class="con_txt_1_context">
+						<div class="con_txt_1_context_tit">
+							<p>小城大事</p><span>4-2</span>
+						</div>
+						<div class="con_txt_1_context_txt">
+							<p><!--存放val()值--></p>
+							<div class="little_pic">
+								<span class="little_pic_1"></span><span style="color: #999;position: absolute;font-size: 12px;top: -2px;margin-left: 5px;">浏览0</span>
+								<a href="#" class="little_pic_2">
+									<i class="lit_pic"></i>
+									<span class="lit_txt">点赞</span>
+								</a>
+								<a href="#" class="little_pic_3">
+									<i class="lit_pic_1"></i>
+									<span class="lit_txt_1">评论</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<div class="con_txt_1">
+					<div class="con_txt_pic">
+						<img src="img/use_2.jpg" />
+					</div>
+					<div class="con_txt_1_context">
+						<div class="con_txt_1_context_tit">
+							<p>小城大事</p><span>4-2</span>
+						</div>
+						<div class="con_txt_1_context_txt">
+							<p></p>
+							<div class="little_pic">
+								<span class="little_pic_1"></span><span style="color: #999;position: absolute;font-size: 12px;top: -2px;margin-left: 5px;">浏览0</span>
+								<a href="#" class="little_pic_2">
+									<i class="lit_pic"></i>
+									<span class="lit_txt">点赞</span>
+								</a>
+								<a href="#" class="little_pic_3">
+									<i class="lit_pic_1"></i>
+									<span class="lit_txt_1">评论</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<script>
+			$("#text").keyup(function(){   //键盘事件
+				var len = $(this).val().length
+				var num = 150
+				if(150-len<0){
+					var oTxt = $(this).val().substring(0,150)
+					$(this).val(oTxt)
+				}else{
+					$(".con_input p em").html((num-len)+"个字")
+				}
+			})
+			
+			$("#text").keydown(function(){ //键盘事件
+				var len = $(this).val().length
+				var num = 150
+				if(150-len<0){
+					var oTxt = $(this).val().substring(0,150)
+					$(this).val(oTxt)
+				}else{
+					$(".con_input p em").html((num-len)+"个字")
+				}
+			})
+			var num = 0
+			$(".con_btn .con_btn_1").click(function(){  /*发布评论*/
+				var oTxt = $("#text").val()
+				var oCon = "<p>"+oTxt+"</p>"
+				$(".con_txt_1_context_txt p").html(oCon)
+				$(".con_txt .con_txt_1").css("display","block")
+				num++
+				$("#num").html(num)
+				$("#text").val("")
+			})
+			
+			var onOff = true
+			$(".lit_pic").click(function(){  //点赞功能
+				if(onOff){
+					$(this).css("background-position","-20px  -41px")
+					onOff = false
+				}else{
+					$(this).css("background-position","-40px  -21px")
+					onOff = true
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

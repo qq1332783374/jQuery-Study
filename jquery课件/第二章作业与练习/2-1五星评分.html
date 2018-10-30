@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="1" id="tb" style="cursor:pointer">
+        <tr>
+            <td>☆</td>
+            <td>☆</td>
+            <td>☆</td>
+            <td>☆</td>
+            <td>☆</td>
+        </tr>
+       
+    </table>
+     <div id="wenzi">
+        	
+        </div>
+    <script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+     <script type="text/javascript">
+        $(function (){
+        	var arr = ["很差","比较差","一般","比较好","很好"];
+            $('#tb td').click(function () {
+            	var i = $(this).index()
+                if($(this).text()=='★'){
+                	$(this).text('★').nextAll().text('☆');
+                	$("#wenzi").html(arr[i]);
+                }else{
+                	$(this).text('★').prevAll().text('★');
+                	$("#wenzi").html(arr[i]);
+                }
+            })
+        });
+    </script>
+	</body>
+</html>

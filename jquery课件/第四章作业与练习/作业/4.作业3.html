@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#btn').click(function() {
+					//因为采用链式编程,可以直接在后面继续点 .last
+					$('table tr:first').css('fontSize', '30px');
+					$('table tr:last').css('color', 'red');
+					$('table tr:gt(0):lt(3)').css('fontSize', '28px');
+					//在这里fontSize 是大写的,需要注意
+					//table中th标签中的字体居中加粗
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<input type="button" name="name" value="改变" id='btn' />
+		<table border="1px">
+			<tr>
+				<td>
+					姓名
+				</td>
+				<td>
+					成绩
+				</td>
+			</tr>
+			<tr>
+				<td>
+					tom
+				</td>
+				<td>
+					100
+				</td>
+			</tr>
+			<tr>
+				<td>
+					jim
+				</td>
+				<td>
+					99
+				</td>
+			</tr>
+			<tr>
+				<td>
+					john
+				</td>
+				<td>
+					98
+				</td>
+			</tr>
+			<tr>
+				<td>
+					jason
+				</td>
+				<td>
+					97
+				</td>
+			</tr>
+			<tr>
+				<td>
+					aaa
+				</td>
+				<td>
+					97
+				</td>
+			</tr>
+			<tr>
+				<td>
+					平均分
+				</td>
+				<td>
+					98
+				</td>
+			</tr>
+		</table>
+		<script>
+			/*
+			 * 点击按钮
+			 第一行tr的字体大小为30px
+			 最后一行tr,颜色为红色
+			 
+			 需要思考的一问,不可以用eq() 只可以用:gt()和lt()
+			 把第二行,第三行,第四行的字体大小变成28px
+			 * 
+			 * */
+		</script>
+	</body>
+
+</html>

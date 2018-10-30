@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+
+	</head>
+
+	<body>
+
+		<h1>欢迎来到我的主页</h1>
+		<p class="intro">咖啡</p>
+		<p>学习让人进步！</p>
+		<p>学习让人进步！</p>
+
+		<p>你最喜欢的网站:</p>
+		<ul id="choose">
+			<li>Google</li>
+			<li>Taobao</li>
+			<li>IE</li>
+		</ul>
+		<script>
+			//利用jquery让.intro不变色
+			$(document).ready(function() {
+				$("p:not(.intro)").css("background-color", "yellow");
+			});
+		</script>
+	</body>
+
+</html>
